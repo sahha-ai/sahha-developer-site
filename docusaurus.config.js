@@ -71,10 +71,11 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'docsSidebar',
             position: 'left',
             label: 'Docs',
           },
+          {to: 'https://sandbox-api.sahha.ai/swagger/index.html', label: 'API', position: 'left'},
           {to: '/blog', label: 'Blog', position: 'left'},
           /*
           {
@@ -92,7 +93,7 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Get Started',
                 to: '/docs/intro',
               },
             ],
