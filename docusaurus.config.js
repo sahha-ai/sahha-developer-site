@@ -4,6 +4,24 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const redocConfig = [
+    'redocusaurus',
+    {
+      // Plugin Options for loading OpenAPI files
+      specs: [
+        {
+          spec: 'https://sandbox-api.sahha.ai/swagger/v1/swagger.json',
+          route: '/api/',
+        },
+      ],
+      // Theme Options for modifying how redoc renders them
+      theme: {
+        // Change with your site colors
+        primaryColor: '#333242',
+      },
+    },
+];
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Sahha Developer',
@@ -54,6 +72,7 @@ const config = {
         },
       }),
     ],
+    redocConfig
   ],
 
   themeConfig:
@@ -75,8 +94,8 @@ const config = {
             position: 'left',
             label: 'Docs',
           },
-          {to: 'https://sandbox-api.sahha.ai/swagger/index.html', label: 'API', position: 'left'},
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/api/', label: 'API', position: 'left'},
+          {to: '/blog/', label: 'Blog', position: 'left'},
           /*
           {
             href: 'https://github.com/facebook/docusaurus',
