@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import HomepageFeatures from '@site/src/components/homepage';
 import ThemedImage from '@theme/ThemedImage';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
@@ -18,8 +18,8 @@ function HomepageHeader() {
         width={"100"}
   alt="Sahha Logo"
   sources={{
-    light: useBaseUrl('/img/sahha-circle-dark.svg'),
-    dark: useBaseUrl('/img/sahha-circle-light.svg'),
+    light: useBaseUrl('/img/sahha-icon-dark.svg'),
+    dark: useBaseUrl('/img/sahha-icon-light.svg'),
   }}
 />
         {/*<h1 className="hero__title">{siteConfig.title}</h1>*/}

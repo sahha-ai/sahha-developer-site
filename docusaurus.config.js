@@ -18,6 +18,7 @@ const redocConfig = [
       theme: {
         // Change with your site colors
         primaryColor: '#333242',
+        primaryColorDark: '#ffffff',
       },
     },
 ];
@@ -66,6 +67,8 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           //editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          blogTitle: 'Sahha | News',
+          blogDescription: 'How digital-phenotyping, artificial intelligence and machine learning will change the world of product development.',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -84,8 +87,8 @@ const config = {
         // title: 'Sahha Developer',
         logo: {
           alt: 'Sahha Icon',
-          src: 'img/logo-light.svg',
-          srcDark: 'img/logo-dark.svg',
+          src: 'img/sahha-logo-light.svg',
+          srcDark: 'img/sahha-logo-dark.svg',
         },
         items: [
           {

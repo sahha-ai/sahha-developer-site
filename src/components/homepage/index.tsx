@@ -36,7 +36,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Try some examples built with Sahha
+        Try some examples showcasing Sahha
       </>
     ),
     url: 'https://github.com/sahha-ai',
