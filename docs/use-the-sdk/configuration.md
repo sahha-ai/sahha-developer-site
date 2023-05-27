@@ -2,144 +2,242 @@
 sidebar_position: 1
 ---
 
-# Configuration
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-Learn how to install the Sahha SDK in your iOS project
+# Configure
 
----
+You will need to configure the Sahha SDK before you can use it.
 
-## Step 1) Install Library
+:::caution Configure the SDK immediately
 
-Choose how you would like to install the Sahha library into your Xcode project.
+The Sahha SDK must be configured immediately on app launch.
 
----
-
-
-### Option A) Swift Package Manager
-
-Add the Sahha swift package to your project's package dependencies.
-
-```text title="Swift Package Manager"
-https://github.com/sahha-ai/sahha-swift
-```
-
----
-
-### Option B) CocoaPods
-
-Add the Sahha pod to your project's pod dependencies.
-
-:::info Install CocoaPods
-Visit <a href="https://cocoapods.org/https://cocoapods.org/" target="_blank">cocoapods.org</a> to learn how to install CocoaPods.
 :::
 
-#### Step 1) Add the Sahha pod to your project's Podfile.
+Choose your specific platform from the options below.
 
-```text title="Podfile"
-pod 'Sahha'
-```
+<Tabs groupId="os">
 
-#### Step 2) Run `pod install` from the `Terminal` app in your project root folder.
+<TabItem value="ios-swiftui" label="iOS (SwiftUI)">
 
-```text title="Terminal"
-$ pod install
-```
-
-***
-
-## Step 2) Import Module
-
-After you have installed the Sahha library, import the Sahha module into any files inside your project that use the SDK.
-
-```swift title="App.swift"
+```swift title=MyApp.swift
+import SwiftUI
+// highlight-next-line
 import Sahha
+
+@main
+struct MyApp: App {
+
+  // highlight-next-line
+  // Configure Sahha inside `init` of your app's `App` view.
+    
+  init() {
+    // highlight-start
+    let settings = SahhaSettings(environment: .development)
+    Sahha.configure(settings) {
+      // SDK is ready to use
+      print("SDK Ready")
+    }
+    // highlight-end
+  }
+
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
+    }
+  }
+    
+}
 ```
 
-***
+</TabItem>
 
-## Step 3) Edit Project
+<TabItem value="ios-uikit" label="iOS (UIKit)">
 
-You will need to edit your project settings to enable the Sahha SDK.
+```swift title=AppDelegate.swift
 
-***
+import UIKit
+// highlight-next-line
+import Sahha
 
-### Usage Descriptions
+@main
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-:::caution Add usage descriptions to your Xcode project
+// highlight-next-line
+// Configure Sahha inside `application didFinishLaunchingWithOptions` of your app's `AppDelegate`.
 
-You will need to write a message explaining to the user why they should approve these permissions.
+  func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+  // highlight-start
+    let settings = SahhaSettings(
+      environment: .development, // Required - .development for testing
+      sensors: [.sleep], // Optional - defaults to all sensors
+      postSensorDataManually: false // Optional - defaults to false
+    )
+    Sahha.configure(settings) {
+      // SDK is ready to use
+      print("SDK Ready")
+    }
+    // highlight-end
+    return true
+  }
 
-- Add `NSMotionUsageDescription`
-- Add `NSHealthShareUsageDescription`
-- Add `NSHealthUpdateUsageDescription`
-:::
-
-***
-
-### HealthKit Entitlement
-
-:::caution Add `HealthKit` entitlement to your Xcode project
-
-- Select your App Target in the Project panel
-- Select `Signing & Capabilities`
-- Tap the `+` button
-- Select `HealthKit` from the list
-- Set `Background Delivery` to `true`
-:::
-
-***
-
-### Background Modes Entitlement
-
-:::caution Add `Background Modes` entitlement to your Xcode project
-
-- Select your App Target in the Project panel
-- Select `Signing & Capabilities`
-- Tap the `+` button
-- Select `Background Modes` from the list
-- Set `Background Fetch` to `true`
-- Set `Background Processing` to `true`
-:::
-
-***
-
-### Info.plist
-
-You can also edit the `Info.plist` file directly.
-
-```xml title="Info.plist"
-<plist version="1.0">
-<dict>
-  <key>NSMotionUsageDescription</key>
-  <string>This app would like access to your motion activity for analysis.</string>
-<key>NSHealthShareUsageDescription</key>
-  <string>This app would like access to your health activity for analysis.</string>
-<key>NSHealthUpdateUsageDescription</key>
-  <string>This app would like access to your health activity for analysis.</string>
-<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-		<string>processing</string>
-	</array>
-</dict>
-</plist>
+}
 ```
 
-***
+</TabItem>
 
-### App.entitlements
+<TabItem value="android" label="Android">
 
-You can also edit the `App.entitlements` file directly.
+```kotlin title=MainActivity.kt
 
-```xml title="App.entitlements"
-<plist version="1.0">
-<dict>
- <key>com.apple.developer.healthkit</key>
-  <true/>
- <key>com.apple.developer.healthkit.access</key>
-  <array/>
- <key>com.apple.developer.healthkit.background-delivery</key>
-  <true/>
-</dict>
-</plist>
+// highlight-next-line
+import sdk.sahha.android.source.*
+
+// highlight-next-line
+// Configure Sahha inside `onCreate` of your app's `MainActivity`.
+
+class MainActivity : ComponentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+// highlight-start
+        // You can specify optional custom notification settings
+        val notificationSettings = SahhaNotificationConfiguration(
+            icon = R.drawable.ic_test, // The icon id must match the filename you add to the project
+            title = "Custom Title",
+            shortDescription = "Custom description",
+        )
+
+        val settings = SahhaSettings (
+            environment = SahhaEnvironment.development,
+            notificationSettings = notificationSettings, // Optional - defaults to null
+            sensors = [.pedometer, .sleep], // Optional - defaults to all avaialable sensors
+            postSensorDataManually = false, // Optional - defaults to false
+        )
+
+        Sahha.configure(application, settings) { error, success ->
+            if (error != null) {
+                println(error)
+            } else {
+                println(success.toString())
+            }
+        }
+        // highlight-end
+    }
+}
 ```
+
+</TabItem>
+
+<TabItem value="flutter" label="Flutter">
+
+```dart title=MyApp.dart
+
+import 'package:sahha_flutter/sahha_flutter.dart';
+
+// Configure Sahha inside `initState` of your app's `AppState`.
+
+class _MyAppState extends State<MyApp> {
+
+  @override
+  void initState() {
+      super.initState();
+
+    // Optional - Android only
+    var notificationSettings = {
+      'icon': 'Custom Icon',
+      'title': 'Custom Title',
+      'shortDescription': 'Custom Description'
+    };
+
+      // Use custom values
+      SahhaFlutter.configure(
+          environment: SahhaEnvironment.production, // Required - .development for testing
+          sensors: [SahhaSensor.device], // Optional - defaults to all sensors
+          postSensorDataManually: true, // Optional - defaults to false
+          notificationSettings: notificationSettings) // Optional - Android only
+      .then((success) => {
+          debugPrint(success.toString())
+        })
+      .catchError((error, stackTrace) => {
+          debugPrint(error.toString())
+        });
+  }
+}
+```
+
+</TabItem>
+
+<TabItem value="react-native" label="React Native">
+
+```typescript title=MyApp.tsx
+
+import Sahha, { SahhaEnvironment, SahhaSensor } from "sahha-react-native";
+
+// Configure Sahha inside your App's `export function`.
+
+export default function App() {
+  // Use custom values
+  const settings = {
+    environment: SahhaEnvironment.production, // Required -  .development for testing
+    // Optional - Android only
+    notificationSettings: {
+      icon: "ic_test",
+      title: "Test Title",
+      shortDescription: "Test description.",
+    },
+    sensors: [SahhaSensor.sleep, SahhaSensor.pedometer], // Optional - defaults to all sensors
+    postSensorDataManually: true, // Optional - defaults to false
+  };
+  Sahha.configure(settings, (error: string, success: boolean) => {
+    console.log(`Success: ${success}`);
+    if (error) {
+      console.error(`Error: ${error}`);
+    }
+  });
+}
+```
+
+</TabItem>
+
+<TabItem value="ionic" label="Ionic / Capacitor">
+
+```typescript title=MyApp.tsx
+import {
+  Sahha,
+  SahhaSensor,
+  SahhaEnvironment,
+  SahhaSettings,
+} from "sahha-capacitor";
+
+// Configure Sahha inside your App's `export function`.
+
+const App: React.FC = () => {
+  const settings: SahhaSettings = {
+    environment: SahhaEnvironment.production, // Required -  .development for testing
+    sensors: [SahhaSensor.sleep], // Optional - defaults to all sensors
+    postSensorDataManually: true, // Optional - defaults to false
+    // Optional - Android only
+    notificationSettings: {
+      icon: "ic_test",
+      title: "Test Title",
+      shortDescription: "Test description.",
+    },
+  };
+
+  Sahha.configure({ settings: settings })
+    .then((data) => {
+      console.log(`Success: ${data.success}`);
+    })
+    .catch((error: Error) => {
+      console.error(error);
+    });
+};
+
+```
+
+</TabItem>
+
+</Tabs>

@@ -75,6 +75,10 @@ In order to use native platform code for Android and iOS, you will need to conve
 
 :::
 
+### Follow our guide to use the Sahha SDK in an Expo project
+
+**coming soon**
+
 ### Browse the Sahha Expo demo app
 
 We've provided a demo app to show how to setup the Sahha SDK inside an Expo development build.
