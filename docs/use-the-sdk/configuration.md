@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# iOS
+# Configuration
 
 Learn how to install the Sahha SDK in your iOS project
 

@@ -39,7 +39,7 @@ You can find your Client ID and Client Secret inside the Dashboard by going to `
 
 You will need to authenticate your account to access the Sahha API.
 
-[<u>API - Authenticate Account</u>](https://developer.sahha.ai/reference/post_api-v1-oauth-account-token)
+[API - Authenticate Account](/api/#tag/1.-Account-Authentication/paths/~1api~1v1~1oauth~1account~1token/post)
 
 Use your Client ID and Client Secret from the Dashboard to authenticate your account via the API.
 
@@ -68,7 +68,7 @@ You will receive an `accountToken` that allows you to create new user profiles.
 
 User profiles represent the unique individuals that user your app or service. You will need to authenticate your users in order to upload data and download an analysis for each individual.
 
-[<u>API - Authenticate User Profile</u>](https://developer.sahha.ai/reference/post_api-v1-oauth-profile-register)
+[<u>API - Authenticate User Profile</u>](/api/#tag/3.-Profile-Authentication)
 
 Use your `accountToken` and `externalId` to authenticate a user profile via the API.
 
@@ -114,7 +114,7 @@ You can also authenticate a user profile via the SDK.
 
 If you also install the Sahha SDK in your app, you will need to pass `appId`, `appSecret`, and `externalId` to the `authenticate` method.
 
-[Profile - Authenticate](doc:profile#authenticate)
+[Profile - Authenticate](./use-the-sdk/profile)
 
 :::
 
@@ -126,9 +126,9 @@ It's time to start building with Sahha!
 
 You can either:
 
-**A)** [<u>Use the API</u>](https://developer.sahha.ai/reference)
+**A)** [Use the API](/api/)
 
-**B)** [<u>Use the SDK</u>](doc:configuration)
+**B)** [Use the SDK](./use-the-sdk/configuration)
 
 :::caution Disclaimer
 
@@ -142,7 +142,7 @@ We recommend sending behavioral data using one of the available SDK's instead of
 
 To see what you can build with Sahha, we recommend trying one of our demo apps.
 
-[<u>Try the Demo App</u>](doc:try-the-demo)
+[Try the Demo App](./try-the-demo)
 
 ***
 

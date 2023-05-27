@@ -51,6 +51,8 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: [],
+
   presets: [
     [
       'classic',
@@ -148,7 +150,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['swift'],
+        additionalLanguages: ['swift', 'kotlin', 'dart', 'typescript', 'java'],
       },
     }),
 };
