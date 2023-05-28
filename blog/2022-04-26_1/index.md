@@ -142,8 +142,6 @@ What follows are the metrics for our best performing binary classifiers to date,
 
 > The Sahha Data Science team favors Model 2 due to its balance in specificity and sensitivity, where accuracy isn’t gained in one class at the cost of another class.
 
-The production model as of 25th April 2022 uses Model 2 and the output of this model is documented here: [developer.sahha.ai/models](https://developer.sahha.ai/models).
-
 ### What’s coming?
 - Improved binary classification specificity and sensitivity
 

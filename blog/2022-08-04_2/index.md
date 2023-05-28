@@ -88,7 +88,7 @@ Currently, the Berg Model is made up of 16 models; one for each unique combinati
 
 - Android step model
 
-If you have further questions, please reach out to <u>engineering@sahha.ai</u> or join our <u>[Slack Developer Community](https://join.slack.com/t/sahhacommunity/shared_invite/zt-1w0fmfbvk-qUwQ83tJgXyjT9XSxJvKIw)</u>.
+If you have further questions, please reach out to engineering@sahha.ai or join our [Slack Developer Community](https://join.slack.com/t/sahhacommunity/shared_invite/zt-1w0fmfbvk-qUwQ83tJgXyjT9XSxJvKIw).
 
 ---
 
