@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksahha_developer_site=self.webpackChunksahha_developer_site||[]).push([[2040],{2874:e=>{e.exports=JSON.parse('{"label":"sleep","permalink":"/sahha-developer-site/blog/tags/sleep","allTagsPath":"/sahha-developer-site/blog/tags","count":1}')}}]);
