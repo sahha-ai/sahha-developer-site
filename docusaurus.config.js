@@ -122,7 +122,7 @@ const config = {
               },
               {
                 label: 'Install the SDK',
-                to: '/docs/install-the-sdk',
+                to: '/docs/category/install-the-sdk',
               },
               {
                 label: 'Try the Demo',
@@ -158,7 +158,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['swift', 'kotlin', 'dart', 'typescript', 'java'],
+        additionalLanguages: ['swift', 'kotlin', 'dart'],
       },
     }),
 };
