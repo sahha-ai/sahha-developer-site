@@ -120,6 +120,14 @@ const config = {
                 label: 'Get Started',
                 to: '/docs/intro',
               },
+              {
+                label: 'Install the SDK',
+                to: '/docs/install-the-sdk',
+              },
+              {
+                label: 'Try the Demo',
+                to: '/docs/try-the-demo',
+              },
             ],
           },
           {

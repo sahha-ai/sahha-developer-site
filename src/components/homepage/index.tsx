@@ -16,7 +16,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Read about cool things happening at Sahha
+        Read cool things happening at Sahha
       </>
     ),
     url: '/blog/',
@@ -26,7 +26,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Meet other developers who are using Sahha
+        Meet other developers using Sahha
       </>
     ),
     url: 'https://join.slack.com/t/sahhacommunity/shared_invite/zt-1w0fmfbvk-qUwQ83tJgXyjT9XSxJvKIw',
