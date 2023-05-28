@@ -71,6 +71,8 @@ const config = {
           //editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
           blogTitle: 'Sahha | News',
           blogDescription: 'How digital-phenotyping, artificial intelligence and machine learning will change the world of product development.',
+          postsPerPage: 10,
+          blogSidebarCount: 20,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
