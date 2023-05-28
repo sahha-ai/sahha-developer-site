@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksahha_developer_site=self.webpackChunksahha_developer_site||[]).push([[9562],{4960:e=>{e.exports=JSON.parse('{"label":"digital health","permalink":"/sahha-developer-site/blog/tags/digital-health","allTagsPath":"/sahha-developer-site/blog/tags","count":2}')}}]);
