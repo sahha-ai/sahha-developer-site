@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksahha_developer_site=self.webpackChunksahha_developer_site||[]).push([[930],{7761:e=>{e.exports=JSON.parse('{"label":"data science","permalink":"/blog/tags/data-science","allTagsPath":"/blog/tags","count":2}')}}]);
