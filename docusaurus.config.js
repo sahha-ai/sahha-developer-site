@@ -39,7 +39,6 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'sahha-ai', // Usually your GitHub org/user name.
   projectName: 'sahha-developer-site', // Usually your repo name.
-  deploymentBranch: 'master',
   trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
