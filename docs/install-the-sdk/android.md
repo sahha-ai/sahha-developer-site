@@ -39,23 +39,7 @@ dependencies {
 
 ***
 
-## Step 3) Add Permissions
-
-Add the required permissions to your project's AndroidManifest.xml.
-
-```xml title=AndroidManifest.xml
-<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-<uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-<uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
-<uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
-```
-
-***
-
-## Step 4) Import Module
+## Step 3) Import Module
 
 Import the Sahha module into any files inside your project that use the SDK.
 
