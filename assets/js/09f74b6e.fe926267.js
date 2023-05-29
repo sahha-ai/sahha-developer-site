@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksahha_developer_site=self.webpackChunksahha_developer_site||[]).push([[4264],{6796:e=>{e.exports=JSON.parse('{"label":"ionic","permalink":"/sahha-developer-site/blog/tags/ionic","allTagsPath":"/sahha-developer-site/blog/tags","count":1}')}}]);

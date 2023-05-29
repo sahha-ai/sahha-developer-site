@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksahha_developer_site=self.webpackChunksahha_developer_site||[]).push([[2825],{2189:e=>{e.exports=JSON.parse('{"label":"healthcare","permalink":"/sahha-developer-site/blog/tags/healthcare","allTagsPath":"/sahha-developer-site/blog/tags","count":1}')}}]);

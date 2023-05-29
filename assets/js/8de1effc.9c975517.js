@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksahha_developer_site=self.webpackChunksahha_developer_site||[]).push([[3190],{3090:a=>{a.exports=JSON.parse('{"label":"capacitor","permalink":"/blog/tags/capacitor","allTagsPath":"/blog/tags","count":1}')}}]);

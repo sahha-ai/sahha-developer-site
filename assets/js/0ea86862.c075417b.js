@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksahha_developer_site=self.webpackChunksahha_developer_site||[]).push([[6426],{4653:e=>{e.exports=JSON.parse('{"label":"data security","permalink":"/sahha-developer-site/blog/tags/data-security","allTagsPath":"/sahha-developer-site/blog/tags","count":1}')}}]);

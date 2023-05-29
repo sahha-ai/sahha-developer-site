@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksahha_developer_site=self.webpackChunksahha_developer_site||[]).push([[455],{7738:e=>{e.exports=JSON.parse('{"label":"ux","permalink":"/sahha-developer-site/blog/tags/ux","allTagsPath":"/sahha-developer-site/blog/tags","count":1}')}}]);
