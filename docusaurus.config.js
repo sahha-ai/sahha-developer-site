@@ -86,7 +86,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/sahha-logo.svg',
+      image: 'img/sahha-logo.jpg',
       navbar: {
         // title: 'Sahha Developer',
         logo: {

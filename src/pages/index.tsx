@@ -40,7 +40,7 @@ export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Home`}
+      title="Home"
       description="Develop with Sahha">
       <HomepageHeader />
       <main>
