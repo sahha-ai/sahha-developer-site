@@ -69,7 +69,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           //editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          blogTitle: 'Sahha | News',
+          blogTitle: 'News',
           blogDescription: 'How digital-phenotyping, artificial intelligence and machine learning will change the world of product development.',
           postsPerPage: 10,
           blogSidebarCount: 20,
@@ -86,7 +86,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/sahha-logo.svg',
       navbar: {
         // title: 'Sahha Developer',
         logo: {
