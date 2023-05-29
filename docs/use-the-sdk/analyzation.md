@@ -296,7 +296,7 @@ Some data sources are not yet available on all platforms. Sahha continues to imp
 | Data Source | Description             | Android | iOS |
 | ----------- | ----------------------- | :-----: | :-: |
 | sleep       | User sleep patterns     |    ✓    |  ✓  |
-| steps       | User walking patterns   |    X    |  ✓  |
+| steps       | User walking patterns   |    ✓    |  ✓  |
 | screen      | User device screen time |    ✓    |  X  |
 | heart       | User heart patterns     |    X    |  ✓  |
 | blood       | User blood patterns     |    X    |  ✓  |
