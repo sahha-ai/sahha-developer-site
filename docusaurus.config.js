@@ -95,11 +95,12 @@ const config = {
           srcDark: 'img/sahha-logo-dark.svg',
         },
         items: [
+          /*
           {to: 'https://sahha.ai/product', label: 'Product', position: 'left'},
           {to: 'https://sahha.ai/privacy', label: 'Privacy', position: 'left'},
           {to: 'https://sahha.ai/research', label: 'Research', position: 'left'},
           {to: 'https://sahha.ai/faq', label: 'FAQ', position: 'left'},
-          {to: '/blog', label: 'News', position: 'left'},
+          */
           {
             type: 'docSidebar',
             sidebarId: 'docsSidebar',
@@ -107,6 +108,7 @@ const config = {
             label: 'Docs',
           },
           {to: '/api', label: 'API', position: 'left'},
+          {to: '/blog', label: 'News', position: 'left'},
           {to: 'https://app.sahha.ai/auth/register', label: 'Sign Up', position: 'right'},
         ],
       },
