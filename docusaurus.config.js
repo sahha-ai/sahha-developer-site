@@ -93,8 +93,10 @@ const config = {
           alt: 'Sahha Icon',
           src: 'img/sahha-logo-light.svg',
           srcDark: 'img/sahha-logo-dark.svg',
+          href: 'https://sahha.ai'
         },
         items: [
+          {to: '/', label: 'Developer', position: 'left'},
           /*
           {to: 'https://sahha.ai/product', label: 'Product', position: 'left'},
           {to: 'https://sahha.ai/privacy', label: 'Privacy', position: 'left'},
@@ -109,7 +111,7 @@ const config = {
           },
           {to: '/api', label: 'API', position: 'left'},
           {to: '/blog', label: 'News', position: 'left'},
-          {to: 'https://app.sahha.ai/auth/register', label: 'Sign Up', position: 'right'},
+          {to: 'https://app.sahha.ai/auth/register', label: 'Start Building', position: 'right'},
         ],
       },
       footer: {

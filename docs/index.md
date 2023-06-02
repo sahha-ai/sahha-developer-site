@@ -14,12 +14,12 @@ This page will help you get started with Sahha. You'll be up and running in a ji
 
 ## Step 1) Register Your Account
 
-Tap "Get Started with Sahha" to quickly sign up for an account that your organization can use to access Sahha services.
+Tap "Register Account" to quickly sign up for an account that your organization can use to access Sahha services.
 
 <Link
             className="button button--secondary button--lg"
             to='https://app.sahha.ai/?rel=docs'>
-            Get Started with Sahha
+            Register Account
           </Link>
 
 ---
