@@ -114,7 +114,7 @@ You can also authenticate a user profile via the SDK.
 
 If you also install the Sahha SDK in your app, you will need to pass `appId`, `appSecret`, and `externalId` to the `authenticate` method.
 
-[Profile - Authenticate](./use-the-sdk/profile)
+[Profile - Authenticate](/docs/use-the-sdk/profile)
 
 :::
 
@@ -128,7 +128,7 @@ You can either:
 
 **A)** [Use the API](/api/)
 
-**B)** [Use the SDK](./use-the-sdk/configuration)
+**B)** [Use the SDK](/docs/use-the-sdk/configuration)
 
 :::caution Disclaimer
 
@@ -142,7 +142,7 @@ We recommend sending behavioral data using one of the available SDK's instead of
 
 To see what you can build with Sahha, we recommend trying one of our demo apps.
 
-[Try the Demo App](./try-the-demo)
+[Try the Demo App](/docs/try-the-demo)
 
 ***
 
