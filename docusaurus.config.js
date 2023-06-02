@@ -93,7 +93,8 @@ const config = {
           alt: 'Sahha Icon',
           src: 'img/sahha-logo-light.svg',
           srcDark: 'img/sahha-logo-dark.svg',
-          href: 'https://sahha.ai'
+          href: 'https://sahha.ai',
+          target: '_self',
         },
         items: [
           {to: '/', label: 'Developer', position: 'left'},
