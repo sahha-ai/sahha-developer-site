@@ -77,7 +77,7 @@ One way to interpret the percentage score for messaging, recommendations or othe
 
 ---
 
-# **Depression predictor**
+## **Depression predictor**
 
 **Where can I find it?** The depressed predictor is documented [here](./use-the-sdk/analyzation.md) and available through REST or via our mobile SDK.
 
