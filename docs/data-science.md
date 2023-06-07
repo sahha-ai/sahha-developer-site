@@ -77,7 +77,7 @@ One way to interpret the percentage score for messaging, recommendations or othe
 
 ---
 
-## Depression predictor
+## Depression Predictor
 
 **Where can I find it?** The depressed predictor is documented [here](./use-the-sdk/analyzation.md) and available through REST or via our mobile SDK.
 
@@ -135,7 +135,7 @@ Our current depression model is a binary output meaning is provides only a `‘d
 
 ---
 
-## Stress predictor
+## Stress Predictor
 
 **Where can I find it?** The stress predictor is currently available to select customers only. Please enquire to register interest: sales@sahha.ai.
 
