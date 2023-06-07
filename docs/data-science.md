@@ -95,9 +95,9 @@ The messaging you choose is optional however **we recommend not displaying the l
 
 ---
 
-## Model Training: PHQ-9
+### Model Training: PHQ-9
 
-**The model has been trained on PHQ-9** (Patient Health Questionnaire-9) **rating scale using device sensor data.** The PHQ-9 is a screening tool used to assess the severity of depression symptoms in individuals. 
+**The depression model has been trained on PHQ-9** (Patient Health Questionnaire-9) **rating scale using device sensor data.** The PHQ-9 is a screening tool used to assess the severity of depression symptoms in individuals. 
 
 While the PHQ-9 questions are not necessarily interventions themselves, they can provide insight into potential interventions that may be helpful for individuals experiencing depression.
 
@@ -153,16 +153,16 @@ The messaging you choose is optional however **we recommend not displaying the l
 
 ---
 
-## Stress Similarity
+### Stress Similarity
 
 - The Stress Similarity Score is updated on a daily basis, using data collected over the last 7 days. It does indeed have the potential to change daily, based on the shifts in movement activity. An essential caveat to note here is that we require at least four days' worth of steps data within the previous seven days for our model to operate effectively. This ensures the reliability and accuracy of the scores generated.
 - Stress Similarity Score essentially represents how your daily habits (derived from sensor data) align with those of individuals who have been identified as stressed. A high score means your habits are a lot like theirs. A low score means your habits are pretty different. This doesn't say for sure if you're stressed, but gives you an idea if your habits are like those who are.
 
 ---
 
-## Model Training: DASS-21
+### Model Training: DASS-21
 
-The model has been trained on the DASS21 (Depression, Anxiety, Stress, Scale) clinical questionnaire using device sensor data. The DASS21 is a screening tool to assess for varying levels of depression, anxiety and stress.
+The stress model has been trained on the DASS21 (Depression, Anxiety, Stress, Scale) clinical questionnaire using device sensor data. The DASS21 is a screening tool to assess for varying levels of depression, anxiety and stress.
 
 The subset of the scale involves a set of questions specifically to assess severity of stress which has been used to train this model.
 
