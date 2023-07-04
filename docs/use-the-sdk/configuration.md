@@ -137,15 +137,18 @@ class MainActivity : ComponentActivity() {
 
 ```dart title=MyApp.dart
 
+// highlight-next-line
 import 'package:sahha_flutter/sahha_flutter.dart';
 
-// Configure Sahha inside `initState` of your app's `AppState`.
 
 class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-      super.initState();
+    super.initState();
+
+    // highlight-start
+    // Configure Sahha inside `initState` of your app's `AppState`.
 
     // Optional - Android only
     var notificationSettings = {
@@ -154,16 +157,18 @@ class _MyAppState extends State<MyApp> {
       'shortDescription': 'Custom Description'
     };
 
-      // Use custom values
-      SahhaFlutter.configure(
-          environment: SahhaEnvironment.production, // Required - .development for testing
-          sensors: [SahhaSensor.device] // Optional - defaults to all sensors
-      .then((success) => {
-          debugPrint(success.toString())
-        })
-      .catchError((error, stackTrace) => {
-          debugPrint(error.toString())
-        });
+    // Use custom values
+    SahhaFlutter.configure(
+      environment: SahhaEnvironment.production, // Required - .development for testing
+      sensors: [SahhaSensor.device] // Optional - defaults to all sensors
+    .then((success) => {
+      debugPrint(success.toString())
+    })
+    .catchError((error, stackTrace) => {
+      debugPrint(error.toString())
+    });
+
+    // highlight-end
   }
 }
 ```
@@ -174,28 +179,39 @@ class _MyAppState extends State<MyApp> {
 
 ```typescript title=MyApp.tsx
 
+import React, { useEffect } from 'react';
+// highlight-next-line
 import Sahha, { SahhaEnvironment, SahhaSensor } from "sahha-react-native";
 
-// Configure Sahha inside your App's `export function`.
-
 export default function App() {
-  // Use custom values
-  const settings = {
-    environment: SahhaEnvironment.production, // Required -  .development for testing
-    // Optional - Android only
-    notificationSettings: {
-      icon: "ic_test",
-      title: "Test Title",
-      shortDescription: "Test description.",
-    },
-    sensors: [SahhaSensor.sleep, SahhaSensor.pedometer], // Optional - defaults to all sensors
-  };
-  Sahha.configure(settings, (error: string, success: boolean) => {
-    console.log(`Success: ${success}`);
-    if (error) {
-      console.error(`Error: ${error}`);
-    }
-  });
+
+   useEffect(() => {
+
+// highlight-start
+    // Configure Sahha inside the `useEffect` of your App's `export function`.
+
+    // Use custom values
+    const settings = {
+      environment: SahhaEnvironment.production, // Required -  .development for testing
+      // Optional - Android only
+      notificationSettings: {
+        icon: "ic_test",
+        title: "Test Title",
+        shortDescription: "Test description.",
+      },
+      sensors: [SahhaSensor.sleep, SahhaSensor.pedometer], // Optional - defaults to all sensors
+    };
+
+    Sahha.configure(settings, (error: string, success: boolean) => {
+      console.log(`Success: ${success}`);
+      if (error) {
+        console.error(`Error: ${error}`);
+      }
+    });
+  // highlight-end
+
+  }, []);
+
 }
 ```
 
@@ -204,34 +220,47 @@ export default function App() {
 <TabItem value="ionic" label="Ionic / Capacitor">
 
 ```typescript title=MyApp.tsx
+
+import React, { useEffect } from 'react';
+// highlight-start
 import {
   Sahha,
   SahhaSensor,
   SahhaEnvironment,
   SahhaSettings,
 } from "sahha-capacitor";
-
-// Configure Sahha inside your App's `export function`.
+// highlight-end
 
 const App: React.FC = () => {
-  const settings: SahhaSettings = {
-    environment: SahhaEnvironment.production, // Required -  .development for testing
-    sensors: [SahhaSensor.sleep], // Optional - defaults to all sensors
-    // Optional - Android only
-    notificationSettings: {
-      icon: "ic_test",
-      title: "Test Title",
-      shortDescription: "Test description.",
-    },
-  };
 
-  Sahha.configure({ settings: settings })
+  useEffect(() => {
+
+// highlight-start
+  // Configure Sahha inside the `useEffect` of your App's `export function`.
+
+    // Use custom values
+    const settings: SahhaSettings = {
+      environment: SahhaEnvironment.production, // Required -  .development for testing
+      sensors: [SahhaSensor.sleep], // Optional - defaults to all sensors
+      // Optional - Android only
+      notificationSettings: {
+        icon: "ic_test",
+        title: "Test Title",
+        shortDescription: "Test description.",
+      },
+    };
+
+    Sahha.configure({ settings: settings })
     .then((data) => {
       console.log(`Success: ${data.success}`);
     })
     .catch((error: Error) => {
       console.error(error);
     });
+    // highlight-end
+
+  }, []);
+
 };
 
 ```
