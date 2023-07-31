@@ -119,21 +119,115 @@ We recommend storing and accessing these values from your server on app launch.
 
 :::
 
+---
+
+### External ID
+
+You will need to use an External ID to authenticate user profiles via the SDK.
+
 :::tip Choosing your External ID
 
 An External ID can be any string you choose to identify a user profile within your organization. This ID must be unique for each of your users. This ID has a limit of 100 characters.
 
-Suggested formats:
-
-- **UUID**, e.g. `123e4567-e89b-12d3-a456-426614174000`
-- **Email**, e.g. `user@email.com`
-- **Username**, e.g. `User123`
+We suggest using an anonymous UUID e.g. `123e4567-e89b-12d3-a456-426614174000`
 
 If your user changes devices, make sure to use the same External ID to identify them on the new device.
 
 :::
 
+:::danger User Privacy
+
+Sahha does not collect personally identifiable information from users due to privacy and security.
+
+**DO NOT** use an External ID that could be used to personally identify a user.
+
+For example, do not use emails or usernames for External ID:
+ - Email (Samantha.Jones@website.com)
+ - Username (TimmyT_123)
+
+:::
+
 ***
+
+## Deauthenticate
+
+If you would like to change authenticated users, first deauthenticate the current user before authenticating a new user.
+
+The SDK will take care of switching user data and automatically issuing and refreshing API tokens.
+
+<Tabs groupId="os">
+
+<TabItem value="ios" label="iOS">
+
+```swift title=MyApp.swift
+Sahha.deauthenticate { error, success in
+	if let error = error {
+   	print(error)
+	} else if success {
+ 		print("You are now deauthenticated")
+ 	}
+}
+```
+
+</TabItem>
+
+<TabItem value="android" label="Android">
+
+```kotlin title=MainActivity.kt
+Sahha.deauthenticate { error, success ->
+    if (success) farewell = "Successful"
+    else farewell = error ?: "Failed"
+}
+```
+
+</TabItem>
+
+<TabItem value="flutter" label="Flutter">
+
+```dart title=MyApp.dart
+SahhaFlutter.deauthenticate()
+  .then((success) => {
+    debugPrint(success.toString())
+  })
+  .catchError((error, stackTrace) => {
+    debugPrint(error.toString())
+  });
+```
+
+</TabItem>
+
+<TabItem value="react-native" label="React Native">
+
+```typescript title=MyApp.tsx
+Sahha.deauthenticate(
+  (error: string, success: boolean) => {
+    console.log(`Success: ${success}`);
+    if (error) {
+      console.error(`Error: ${error}`);
+    }
+  }
+);
+```
+
+</TabItem>
+
+<TabItem value="ionic" label="Ionic / Capacitor">
+
+```typescript title=MyApp.tsx
+Sahha.deauthenticate()
+  .then((data) => {
+    console.log(`Success: ${data.success}`);
+  })
+  .catch((error: Error) => {
+    console.error(error);
+  });
+```
+
+</TabItem>
+
+</Tabs>
+
+---
 
 ## Demographic
 
