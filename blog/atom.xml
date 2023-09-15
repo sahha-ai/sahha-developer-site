@@ -115,17 +115,6 @@ What is ‘Data sharing’ within health care?
         <category label="user experience" term="user experience"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Sahha SDK now supports Ionic / Capacitor]]></title>
-        <id>https://developer.sahha.ai/blog/sahha-ionic-capacitor-sdk</id>
-        <link href="https://developer.sahha.ai/blog/sahha-ionic-capacitor-sdk"/>
-        <updated>2022-05-18T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Sahha SDK now supports Ionic / Capacitor]]></summary>
-        <content type="html"><![CDATA[<hr><p><em>Sahha SDK now supports Ionic / Capacitor</em></p><p><img loading="lazy" alt="Sahha" src="/assets/images/banner-fc40f33ed52e3fcf53d86a8608f37e79.png" width="1338" height="666" class="img_ev3q"></p><p>Sahha has released SDK support for Ionic and Capacitor cross-platform apps.</p><p>The project is available through Github and Node Package Manager.</p><p>Documentation and tutorials on how to use Sahha with Ionic is available on our <a href="https://developer.sahha.ai" target="_blank" rel="noopener noreferrer">developer documentation portal</a>.</p><p>As we do for all SDK’s we provide a simple demo application that is <a href="https://github.com/sahha-ai/sahha-demo-ionic" target="_blank" rel="noopener noreferrer">available for download here</a>.</p><p>Enjoy!</p><hr><div style="text-align:center"><h3>Subscribe to Sahha | News</h3><p>How digital-phenotyping, artificial intelligence and machine learning will change the world of product development.</p><a href="https://sahha.substack.com/subscribe?utm_medium=web&amp;utm_source=developer-portal" target="_blank" rel="noopener noreferrer" class="button button--secondary button--lg">Subscribe</a></div>]]></content>
-        <category label="mobile app" term="mobile app"/>
-        <category label="ionic" term="ionic"/>
-        <category label="capacitor" term="capacitor"/>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Sahha Data Science Report 002]]></title>
         <id>https://developer.sahha.ai/blog/sahha-data-science-report-002</id>
         <link href="https://developer.sahha.ai/blog/sahha-data-science-report-002"/>

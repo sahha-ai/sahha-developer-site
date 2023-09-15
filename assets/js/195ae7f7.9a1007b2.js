@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksahha_developer_site=self.webpackChunksahha_developer_site||[]).push([[275],{5983:e=>{e.exports=JSON.parse('{"label":"mobile app","permalink":"/blog/tags/mobile-app","allTagsPath":"/blog/tags","count":1}')}}]);
