@@ -94,23 +94,6 @@ Sahha.analyze((error: string, value: string) => {
 
 </TabItem>
 
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript title=MyApp.tsx
-// Analyze previous 24 Hours
-// Leave date range empty
-
-Sahha.analyze()
-.then((data) => {
-    console.log(data.value);
-})
-.catch((error: Error) => {
-    console.error(error);
-});
-```
-
-</TabItem>
-
 </Tabs>
 
 ---
@@ -129,7 +112,7 @@ You can provide an optional data range if you would like to receive multiple ana
 
 let today = Date()
 let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -7, to: today) ?? Date()
-Sahha.analyze(dates: (sevenDaysAgo, today), includeSourceData: true) { error, json in
+Sahha.analyze(dates: (startDate: sevenDaysAgo, endDate: today)) { error, json in
     if let error = error {
         print(error)
     } else if let json = json {
@@ -150,7 +133,6 @@ val now = Date()
 val lastWeek = Date(now.time - SEVEN_DAYS_MILLIS)
 
 Sahha.analyze(
-    true,
     Pair(lastWeek, now)
 ) { error, success ->
     error?.also {
@@ -171,7 +153,7 @@ Sahha.analyze(
 // Add a date range
 
 var week = DateTime.now().subtract(Duration(days: 7));
-SahhaFlutter.analyze(startDate: week, endDate: DateTime.now())
+SahhaFlutter.analyzeDateRange(startDate: week, endDate: DateTime.now())
 .then((value) => {
     debugPrint(value)
 })
@@ -192,42 +174,13 @@ let endDate: Date = new Date();
 let days = endDate.getDate() - 7;
 var startDate = new Date();
 startDate.setDate(days);
-const settings = {
-  startDate: startDate.getTime(),
-  endDate: endDate.getTime(),
-};
 
-Sahha.analyze(settings, (error: string, value: string) => {
+Sahha.analyzeDateRange(startDate.getTime(), endDate.getTime(), (error: string, value: string) => {
     if (error) {
         console.error(`Error: ${error}`);
     } else if (value) {
         console.log(`Value: ${value}`);
     }
-});
-```
-
-</TabItem>
-
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript title=MyApp.tsx
-// Analyze previous 7 Days
-// Add date range as milliseconds since epoch time
-
-let endDate: Date = new Date();
-let days = endDate.getDate() - 7;
-var startDate = new Date();
-startDate.setDate(days);
-
-Sahha.analyze({
-  startDate: startDate.getTime(),
-  endDate: endDate.getTime(),
-})
-.then((data) => {
-    console.log(data.value);
-})
-.catch((error: Error) => {
-    console.error(error);
 });
 ```
 

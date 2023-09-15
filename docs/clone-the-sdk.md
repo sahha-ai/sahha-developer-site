@@ -39,10 +39,3 @@ Choose your platform:
             to='https://github.com/sahha-ai/sahha-react-native'>
             React Native
           </Link>
-
-#
-<Link
-            className="button button--secondary button--lg"
-            to='https://github.com/sahha-ai/sahha-capacitor'>
-            Ionic / Capacitor
-          </Link>

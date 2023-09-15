@@ -77,19 +77,6 @@ export enum SahhaSensorStatus {
 
 </TabItem>
 
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript title=MyApp.tsx
-export enum SahhaSensorStatus {
-  pending = 0, // Sensors pending User permission
-  unavailable = 1, // Sensors not supported by the User's device
-  disabled = 2, // Sensors disabled by the User
-  enabled = 3, // Sensors enabled by the User
-}
-```
-
-</TabItem>
-
 </Tabs>
 
 ---
@@ -142,10 +129,18 @@ Sahha.configure(settings) {
     // SDK is ready to use
     print("SDK Ready")
   	
-    Sahha.getSensorStatus { newStatus in
-    	if newStatus == .pending {
-        // Show your custom UI asking your user to setup Sleep in the Health App
+    Sahha.getSensorStatus { error, sensorStatus in
+        if let error = error {
+            print(error)
+        }
+    	else if sensorStatus == .pending {
+            // Show your custom UI asking your user to setup Sleep in the Health App
     	}
+        else if sensorStatus = .enabled {
+            // Sensors are enabled and ready
+        } else {
+            // Sensors are disabled or unavailable
+        }
 	}
 }
 ```
@@ -177,7 +172,7 @@ Sahha.configure(application, settings) { error, success ->
 <TabItem value="flutter" label="Flutter">
 
 ```dart title=MyApp.dart
-SahhaFlutter.configure(environment: SahhaEnvironment.development)
+SahhaFlutter.configure(environment: SahhaEnvironment.sandbox)
     .then((success) {
         debugPrint(success.toString());
 
@@ -224,35 +219,6 @@ Sahha.configure(settings, (error: string, success: boolean) => {
 
 </TabItem>
 
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript title=MyApp.tsx
-import { Sahha, SahhaSensor, SahhaSensorStatus } from "sahha-capacitor";
-
-Sahha.configure({ settings: settings })
-.then((data: any) => {
-    console.log(`Success: ${data.success}`);
-
-    // SDK is ready
-
-    Sahha.getSensorStatus()
-    .then((data) => {
-        if (data.status == SahhaSensorStatus.pending) {
-            // Show your custom UI asking your user to setup Sleep in the Health App
-        }
-    })
-    .catch((error: Error) => {
-        console.error(error);
-    });
-
-})
-.catch((error: Error) => {
-    console.error(error);
-});
-```
-
-</TabItem>
-
 </Tabs>
 
 ## Enable Sensors
@@ -264,8 +230,18 @@ Before the SDK can start collecting data, you will need to enable sensors by cal
 <TabItem value="ios" label="iOS">
 
 ```swift title=MyApp.swift
-Sahha.enableSensors { newStatus in
-    print(newStatus.description)
+Sahha.enableSensors { error, sensorStatus in
+    if let error = error {
+        print(error)
+    }
+    else if sensorStatus == .pending {
+        // Show your custom UI asking your user to setup Sleep in the Health App
+    }
+    else if sensorStatus = .enabled {
+        // Sensors are enabled and ready
+    } else {
+        // Sensors are disabled or unavailable
+    }
 }
 ```
 
@@ -311,23 +287,6 @@ Sahha.enableSensors((error: string, value: SahhaSensorStatus) => {
         console.log(`Sensor Status: ${value}`);
         setSensorStatus(value);
     }
-});
-```
-
-</TabItem>
-
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript title=MyApp.tsx
-import { Sahha, SahhaSensor, SahhaSensorStatus } from "sahha-capacitor";
-
-Sahha.enableSensors()
-.then((data) => {
-    const status = SahhaSensorStatus[data.status];
-    console.log(status);
-})
-.catch((error: Error) => {
-    console.error(error);
 });
 ```
 
@@ -384,14 +343,6 @@ SahhaFlutter.openAppSettings()
 </TabItem>
 
 <TabItem value="react-native" label="React Native">
-
-```typescript title=MyApp.tsx
-Sahha.openAppSettings();
-```
-
-</TabItem>
-
-<TabItem value="ionic" label="Ionic / Capacitor">
 
 ```typescript title=MyApp.tsx
 Sahha.openAppSettings();
@@ -473,20 +424,6 @@ Sahha.postSensorData((error: string, success: boolean) => {
     if (error) {
         console.error(`Error: ${error}`);
     }
-});
-```
-
-</TabItem>
-
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript title=MyApp.tsx
-Sahha.postSensorData()
-.then((data) => {
-    console.log(`Success: ${data.success}`);
-})
-.catch((error: Error) => {
-    console.error(error);
 });
 ```
 

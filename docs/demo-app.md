@@ -40,10 +40,3 @@ To see what you can build with Sahha, choose your platform:
             to='https://github.com/sahha-ai/sahha-react-native/tree/master/example'>
             React Native
           </Link>
-
-#
-<Link
-            className="button button--secondary button--lg"
-            to='https://github.com/sahha-ai/sahha-demo-ionic'>
-            Ionic / Capacitor
-          </Link>

@@ -38,7 +38,7 @@ struct MyApp: App {
     
   init() {
     // highlight-start
-    let settings = SahhaSettings(environment: .development)
+    let settings = SahhaSettings(environment: .sandbox)
     Sahha.configure(settings) {
       // SDK is ready to use
       print("SDK Ready")
@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
   // highlight-start
     let settings = SahhaSettings(
-      environment: .development, // Required - .development for testing
+      environment: .sandbox, // Required - .sandbox for testing
       sensors: [.sleep] // Optional - defaults to all sensors
     )
     Sahha.configure(settings) {
@@ -114,7 +114,7 @@ class MainActivity : ComponentActivity() {
         )
 
         val settings = SahhaSettings (
-            environment = SahhaEnvironment.development,
+            environment = SahhaEnvironment.sandbox,
             notificationSettings = notificationSettings, // Optional - defaults to null
             sensors = [.pedometer, .sleep], // Optional - defaults to all avaialable sensors
         )
@@ -159,7 +159,7 @@ class _MyAppState extends State<MyApp> {
 
     // Use custom values
     SahhaFlutter.configure(
-      environment: SahhaEnvironment.production, // Required - .development for testing
+      environment: SahhaEnvironment.sandbox, // Required - .sandbox for testing
       sensors: [SahhaSensor.device] // Optional - defaults to all sensors
     .then((success) => {
       debugPrint(success.toString())
@@ -192,7 +192,7 @@ export default function App() {
 
     // Use custom values
     const settings = {
-      environment: SahhaEnvironment.production, // Required -  .development for testing
+      environment: SahhaEnvironment.sandbox, // Required -  .sandbox for testing
       // Optional - Android only
       notificationSettings: {
         icon: "ic_test",
@@ -217,66 +217,23 @@ export default function App() {
 
 </TabItem>
 
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript title=MyApp.tsx
-
-import React, { useEffect } from 'react';
-// highlight-start
-import {
-  Sahha,
-  SahhaSensor,
-  SahhaEnvironment,
-  SahhaSettings,
-} from "sahha-capacitor";
-// highlight-end
-
-const App: React.FC = () => {
-
-  useEffect(() => {
-
-// highlight-start
-  // Configure Sahha inside the `useEffect` of your App's `export function`.
-
-    // Use custom values
-    const settings: SahhaSettings = {
-      environment: SahhaEnvironment.production, // Required -  .development for testing
-      sensors: [SahhaSensor.sleep], // Optional - defaults to all sensors
-      // Optional - Android only
-      notificationSettings: {
-        icon: "ic_test",
-        title: "Test Title",
-        shortDescription: "Test description.",
-      },
-    };
-
-    Sahha.configure({ settings: settings })
-    .then((data) => {
-      console.log(`Success: ${data.success}`);
-    })
-    .catch((error: Error) => {
-      console.error(error);
-    });
-    // highlight-end
-
-  }, []);
-
-};
-
-```
-
-</TabItem>
-
 </Tabs>
 
 ## Environment Settings
 
-The `SahhaEnvironment` determines if the SDK connects to the `development` or `production` server of the API. Setting this incorrectly will send data to the wrong server.
+The `SahhaEnvironment` determines if the SDK connects to the `sandbox` or `production` server of the API. 
 
 | SahhaEnvironment | Description                     |
 | ---------------- | ------------------------------- |
-| development      | For development and testing     |
-| production       | For submission to the App store |
+| sandbox          | For testing and debugging |
+| production       | For public release on the App Store / Google Play |
+
+:::danger Setting the incorrect environment will send data to the wrong server!
+
+- **Always** use `sandbox` during development of your app.
+- **Only** use `production` when releasing your app to public users *(not for internal testing)*.
+
+:::
 
 <Tabs groupId="os">
 
@@ -284,7 +241,7 @@ The `SahhaEnvironment` determines if the SDK connects to the `development` or `p
 
 ```swift
 public enum SahhaEnvironment: String {
-    case development
+    case sandbox
     case production
 }
 ```
@@ -295,7 +252,7 @@ public enum SahhaEnvironment: String {
 
 ```kotlin
 enum class SahhaEnvironment {
-    development,
+    sandbox,
     production
 }
 ```
@@ -306,7 +263,7 @@ enum class SahhaEnvironment {
 
 ```dart
 enum SahhaEnvironment {
-  development,
+  sandbox,
   production
 }
 ```
@@ -317,18 +274,7 @@ enum SahhaEnvironment {
 
 ```typescript
 enum SahhaEnvironment {
-  development,
-  production
-}
-```
-
-</TabItem>
-
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript
-enum SahhaEnvironment {
-  development,
+  sandbox,
   production
 }
 ```
@@ -411,20 +357,6 @@ enum SahhaSensor {
 
 </TabItem>
 
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript
-enum SahhaSensor {
-  sleep,
-  pedometer,
-  device,
-  heart,
-  blood
-}
-```
-
-</TabItem>
-
 </Tabs>
 
 ---
@@ -438,7 +370,6 @@ You can customize notifications for any platform that includes an Android app.
 - [x] Android
 - [x] Flutter (Android only)
 - [x] React Native (Android only)
-- [x] Ionic / Capacitor (Android only)
 
 _**iOS apps not supported**_
 

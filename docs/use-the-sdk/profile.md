@@ -13,7 +13,112 @@ Manage a Sahha user profile
 
 ## Authenticate
 
-The Sahha SDK must be authenticated in order to connect to the Sahha API. Do this once per user profile. The SDK will take care of automatically issuing and refreshing API tokens.
+The Sahha SDK must be authenticated in order to connect to the Sahha API. Do this once per user profile. Once a profile is authenticated, the SDK will take care of automatically issuing and refreshing API tokens.
+
+You can authenticate a profile in 2 ways - via the API or SDK.
+
+---
+
+### Option A) Authenticate via API
+
+You can authenticate a user profile via the API and then pass the Profile Token to the SDK.
+
+View the API docs: [API - Authenticate User Profile](/api/#tag/3.-Profile-Authentication)
+
+#### Step 1) Use your `accountToken` and `externalId` to authenticate a user profile via the `profile/register` endpoint.
+
+```json title="REQUEST"
+// POST "/oauth/profile/register"
+// AUTHORIZATION HEADER "Account MY_ACCOUNT_TOKEN"
+
+// BODY
+{
+  "externalId": "MY_EXTERNAL_ID"
+}
+```
+
+You will receive a `profileToken` and `refreshToken` in the API response.
+
+```json title="RESPONSE"
+// POST "/oauth/profile/register"
+// AUTHORIZATION HEADER "Account MY_ACCOUNT_TOKEN"
+
+// BODY
+{
+  "profileToken": "PROFILE_TOKEN",
+  "expiresIn": "86400",
+  "tokenType": "Profile",
+  "refreshToken": "REFRESH_TOKEN"
+}
+```
+
+#### Step 2) Pass the `profileToken` and `refreshToken` you generated via the API to the SDK.
+
+<Tabs groupId="os">
+
+<TabItem value="ios" label="iOS">
+
+```swift title=MyApp.swift
+Sahha.authenticate(profileToken: "PROFILE_TOKEN", refreshToken: "REFRESH_TOKEN") { error, success in
+	if let error = error {
+   	print(error)
+	} else if success {
+ 		print("You are now authenticated")
+ 	}
+}
+```
+
+</TabItem>
+
+<TabItem value="android" label="Android">
+
+```kotlin title=MainActivity.kt
+Sahha.authenticate(profileToken: "PROFILE_TOKEN", refreshToken:  "REFRESH_TOKEN") { error, success ->
+    if (success) greeting = "Successful"
+    else greeting = error ?: "Failed"
+}
+```
+
+</TabItem>
+
+<TabItem value="flutter" label="Flutter">
+
+```dart title=MyApp.dart
+SahhaFlutter.authenticateToken(profileToken: "PROFILE_TOKEN", refreshToken: "REFRESH_TOKEN")
+  .then((success) => {
+    debugPrint(success.toString())
+  })
+  .catchError((error, stackTrace) => {
+    debugPrint(error.toString())
+  });
+```
+
+</TabItem>
+
+<TabItem value="react-native" label="React Native">
+
+```typescript title=MyApp.tsx
+Sahha.authenticateToken(
+  "PROFILE_TOKEN",
+  "REFRESH_TOKEN",
+  (error: string, success: boolean) => {
+    console.log(`Success: ${success}`);
+    if (error) {
+      console.error(`Error: ${error}`);
+    }
+  }
+);
+```
+
+</TabItem>
+
+</Tabs>
+
+---
+
+### Option B) Authenticate via SDK
+
+You will need your App ID and App Secret to authenticate user profiles with an External ID.
 
 <Tabs groupId="os">
 
@@ -45,7 +150,7 @@ Sahha.authenticate(appId: "APP_ID", appSecret:  "APP_SECRET", externalId: "EXTER
 <TabItem value="flutter" label="Flutter">
 
 ```dart title=MyApp.dart
-SahhaFlutter.authenticate("APP_ID", "APP_SECRET", "EXTERNAL_ID")
+SahhaFlutter.authenticate(appId: "APP_ID", appSecret: "APP_SECRET", externalId: "EXTERNAL_ID")
   .then((success) => {
     debugPrint(success.toString())
   })
@@ -74,32 +179,13 @@ Sahha.authenticate(
 
 </TabItem>
 
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript title=MyApp.tsx
-Sahha.authenticate({
-  appId: "APP_ID",
-  appSecret: "APP_SECRET",
-  externalId: "EXTERNAL_ID"
-  
-})
-  .then((data) => {
-    console.log(`Success: ${data.success}`);
-  })
-  .catch((error: Error) => {
-    console.error(error);
-  });
-```
-
-</TabItem>
-
 </Tabs>
 
 ---
 
-### App ID / App Secret
+### Using Your App ID and App Secret
 
-You will need your App ID and App Secret to authenticate user profiles via the SDK.
+If you choose to authenticate a user profile via the SDK, you will need to user your App ID and App Secret.
 
 :::tip Finding your App ID and App Secret
 
@@ -121,9 +207,9 @@ We recommend storing and accessing these values from your server on app launch.
 
 ---
 
-### External ID
+### Using Your External ID
 
-You will need to use an External ID to authenticate user profiles via the SDK.
+You will need to provide your own unique External ID to authenticate a user profile.
 
 :::tip Choosing your External ID
 
@@ -211,16 +297,65 @@ Sahha.deauthenticate(
 
 </TabItem>
 
-<TabItem value="ionic" label="Ionic / Capacitor">
+</Tabs>
+
+---
+
+## Check Authentication
+
+You can easily check if a profile is already authenticated via the SDK.
+
+<Tabs groupId="os">
+
+<TabItem value="ios" label="iOS">
+
+```swift title=MyApp.swift
+if Sahha.isAuthenticated {
+  print("Profile is ready")
+} else {
+ 	print("You must authenticate your profile")
+}
+```
+
+</TabItem>
+
+<TabItem value="android" label="Android">
+
+```kotlin title=MainActivity.kt
+if Sahha.isAuthenticated {
+  print("Profile is ready")
+} else {
+ 	print("You must authenticate your profile")
+}
+```
+
+</TabItem>
+
+<TabItem value="flutter" label="Flutter">
+
+```dart title=MyApp.dart
+SahhaFlutter.isAuthenticated()
+  .then((success) => {
+    debugPrint(success.toString())
+  })
+  .catchError((error, stackTrace) => {
+    debugPrint(error.toString())
+  });
+```
+
+</TabItem>
+
+<TabItem value="react-native" label="React Native">
 
 ```typescript title=MyApp.tsx
-Sahha.deauthenticate()
-  .then((data) => {
-    console.log(`Success: ${data.success}`);
-  })
-  .catch((error: Error) => {
-    console.error(error);
-  });
+Sahha.isAuthenticated(
+  (error: string, success: boolean) => {
+    console.log(`Success: ${success}`);
+    if (error) {
+      console.error(`Error: ${error}`);
+    }
+  }
+);
 ```
 
 </TabItem>
@@ -386,22 +521,6 @@ const demographic = {
 
 </TabItem>
 
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript title=MyApp.tsx
-// All values are optional
-
-const demographic: SahhaDemographic = {
-  age: 35, // number
-  gender: "Female", // string, "Male", "Female", "Gender Diverse",
-  country: "NZ", // ISO 2 digit code, i.e. "US", "UK", "AU", etc.
-  birthCountry: "UK", // ISO 2 digit code, i.e. "US", "UK", "AU", etc.
-  birthDate: "1990-05-20", // must be in format "YYYY-MM-DD", i.e. "1990-05-20"
-};
-```
-
-</TabItem>
-
 </Tabs>
 
 ***
@@ -498,28 +617,6 @@ Sahha.postDemographic(demographic, (error: string, success: boolean) => {
 
 </TabItem>
 
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript title=MyApp.tsx
-const demographic: SahhaDemographic = {
-  age: 32, // number
-  gender: "Female", // string, "Male", "Female", "Gender Diverse",
-  country: "NZ", // ISO 2 digit code, i.e. "US", "UK", "AU", etc.
-  birthCountry: "UK", // ISO 2 digit code, i.e. "US", "UK", "AU", etc.
-  birthDate: "1990-05-20", // must be in format "YYYY-MM-DD", i.e. "1990-05-20"
-};
-
-Sahha.postDemographic({ demographic: demographic })
-  .then((data) => {
-    console.log(`Success: ${data.success}`);
-  })
-  .catch((error: Error) => {
-    console.error(error);
-  });
-```
-
-</TabItem>
-
 </Tabs>
 
 ---
@@ -583,20 +680,6 @@ Sahha.getDemographic((error: string, value: string) => {
     console.log(`Value: $ {value}`);
   }
 });
-```
-
-</TabItem>
-
-<TabItem value="ionic" label="Ionic / Capacitor">
-
-```typescript title=MyApp.tsx
-Sahha.getDemographic()
-  .then((data) => {
-    console.log(data.value);
-  })
-  .catch((error: Error) => {
-    console.error(error);
-  });
 ```
 
 </TabItem>

@@ -39,7 +39,7 @@ You can find your Client ID and Client Secret inside the Dashboard by going to `
 
 You will need to authenticate your account to access the Sahha API.
 
-[API - Authenticate Account](/api/#tag/1.-Account-Authentication/paths/~1api~1v1~1oauth~1account~1token/post)
+View the API docs: [API - Authenticate Account](/api/#tag/1.-Account-Authentication/paths/~1api~1v1~1oauth~1account~1token/post)
 
 Use your Client ID and Client Secret from the Dashboard to authenticate your account via the API.
 
@@ -66,11 +66,15 @@ You will receive an `accountToken` that allows you to create new user profiles.
 
 ## Step 4) Authenticate a User Profile
 
-User profiles represent the unique individuals that user your app or service. You will need to authenticate your users in order to upload data and download an analysis for each individual.
+User profiles represent the unique individuals that user your app or service. You will need to authenticate your users in order to upload data and download an analysis for each individual. You can authenticate a user profile via the API or SDK.
 
-[<u>API - Authenticate User Profile</u>](/api/#tag/3.-Profile-Authentication)
+### Authenticate via API
 
-Use your `accountToken` and `externalId` to authenticate a user profile via the API.
+You can authenticate a user profile via the API.
+
+View the API docs: [API - Authenticate User Profile](/api/#tag/3.-Profile-Authentication)
+
+Use your `accountToken` and `externalId` to authenticate a user profile via the `profile/register` endpoint.
 
 ```json title="REQUEST"
 // POST "/oauth/profile/register"
@@ -82,41 +86,28 @@ Use your `accountToken` and `externalId` to authenticate a user profile via the 
 }
 ```
 
-:::tip Choosing your External ID
-
-An External ID can be any string you choose to identify a user profile within your organization. This ID must be unique for each of your users.
-
-Suggested formats:
-
-- **UUID**, e.g. `123e4567-e89b-12d3-a456-426614174000`
-- **Email**, e.g. `user@email.com`
-- **Username**, e.g. `User123`
-
-If your user changes devices, make sure to use the same External ID to identify them on the new device.
-
-:::
-
-You will receive a `profileToken` that allows that specific user profile to connect to the Sahha API.
+You will receive a `profileToken` and `refreshToken` in the API response.
 
 ```json title="RESPONSE"
-// 200 OK
+// POST "/oauth/profile/register"
+// AUTHORIZATION HEADER "Account MY_ACCOUNT_TOKEN"
+
+// BODY
 {
-  "profileToken": "MY_PROFILE_TOKEN",
+  "profileToken": "PROFILE_TOKEN",
   "expiresIn": "86400",
   "tokenType": "Profile",
-  "refreshToken": "MY_REFRESH_TOKEN"
+  "refreshToken": "REFRESH_TOKEN"
 }
 ```
 
+### Authenticate via SDK
+
 You can also authenticate a user profile via the SDK.
 
-:::caution Authenticate a User Profile with the SDK
+You will need to pass `appId`, `appSecret`, and `externalId` to the `authenticate` method.
 
-If you also install the Sahha SDK in your app, you will need to pass `appId`, `appSecret`, and `externalId` to the `authenticate` method.
-
-[Profile - Authenticate](/docs/use-the-sdk/profile)
-
-:::
+View the SDK docs: [Profile - Authenticate](/docs/use-the-sdk/profile)
 
 ---
 
@@ -126,9 +117,9 @@ It's time to start building with Sahha!
 
 You can either:
 
-**A)** [Use the API](/api/)
+**Option A)** [Use the API](/api/)
 
-**B)** [Use the SDK](/docs/use-the-sdk/configuration)
+**Option B)** [Use the SDK](/docs/use-the-sdk/configuration)
 
 :::caution Disclaimer
 
