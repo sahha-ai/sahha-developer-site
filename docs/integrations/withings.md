@@ -2,11 +2,7 @@
 
 Sync data between Withings and Sahha.
 
-import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import logo from './img/withings.png';
-
-<img src={logo} style={{height: 256}} />
+<img src={require('@site/static/img/integrations/withings.png').default} style={{height: 256}} />
 
 ---
 

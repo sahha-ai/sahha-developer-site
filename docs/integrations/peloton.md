@@ -2,11 +2,7 @@
 
 Sync data between Peloton and Sahha.
 
-import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import logo from './img/peloton.png';
-
-<img src={logo} style={{height: 256}} />
+<img src={require('@site/static/img/integrations/peloton.png').default} style={{height: 256}} />
 
 ---
 

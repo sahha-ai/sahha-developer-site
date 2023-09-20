@@ -2,11 +2,7 @@
 
 Sync data between Myzone and Sahha.
 
-import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import logo from './img/myzone.png';
-
-<img src={logo} style={{height: 256}} />
+<img src={require('@site/static/img/integrations/myzone.png').default} style={{height: 256}} />
 
 ---
 

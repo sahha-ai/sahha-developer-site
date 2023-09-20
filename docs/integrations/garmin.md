@@ -2,11 +2,7 @@
 
 Sync data between Garmin and Sahha.
 
-import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import logo from './img/garmin.png';
-
-<img src={logo} style={{height: 256}} />
+<img src={require('@site/static/img/integrations/garmin.png').default} style={{height: 256}} />
 
 ---
 
@@ -14,7 +10,10 @@ import logo from './img/garmin.png';
 
 Your iOS app users will need to perfom a one-time connection between Garmin and Apple Health on their iOS device.
 
-### How Do I Enable or Disable Sharing With Apple Health?
+### Connecting to Apple Health
+
+**How Do I Enable or Disable Sharing With Apple Health?**
+
 To enable or disable sharing data from Garmin Connect to Apple Health, follow the instructions below.
 
 1. Open the Apple Health app.
@@ -31,10 +30,14 @@ To enable or disable sharing data from Garmin Connect to Apple Health, follow th
 
 Once sharing is enabled, the Health app will only display previously recorded data from up to two weeks prior to the sharing being enabled.
 
-### How Is Data Transferred From Garmin Connect to Apple Health?
+**How Is Data Transferred From Garmin Connect to Apple Health?**
+
 Once Garmin Connect sharing is enabled in Apple Health, data will begin syncing to the Apple Health app after each successful device sync with the Garmin Connect app. Data will only be sent to Apple Health while the Garmin Connect app is open in the foreground. If the app is closed or sent to the background, the transfer of data to Apple Health will not complete until a successful sync of the device while the Garmin Connect app is open.
 
-### I Have Enabled Data from Garmin Connect to Be Shared but It Is Not Appearing in the Apple Health App
+### Troubleshooting
+
+**I Have Enabled Data from Garmin Connect to Be Shared but It Is Not Appearing in the Apple Health App**
+
 Apple Health can allow multiple sources to update your health data. When multiple sources are available, only one data source will be chosen based on the priority order listed in the Apple Health app. If you notice that your Garmin Connect data is not appearing in Apple Health but you have enabled sharing, you may need to update the priority of data sources so that Garmin Connect is first priority. For instructions refer to this Apple Support article: [Prioritize data sources in Apple Health](https://support.apple.com/HT204351#prioritize).
 
 :::tip Setup Guide

@@ -2,11 +2,7 @@
 
 Sync data between Oura and Sahha.
 
-import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import logo from './img/oura.png';
-
-<img src={logo} style={{height: 256}} />
+<img src={require('@site/static/img/integrations/oura.png').default} style={{height: 256}} />
 
 ---
 
