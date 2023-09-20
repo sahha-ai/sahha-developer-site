@@ -2,6 +2,12 @@
 
 Sync data between WHOOP and Sahha.
 
+import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import logo from './img/whoop.png';
+
+<img src={logo} style={{height: 256}} />
+
 ---
 
 ## iOS
@@ -9,6 +15,18 @@ Sync data between WHOOP and Sahha.
 Your iOS app users will need to perfom a one-time connection between WHOOP and Apple Health on their iOS device.
 
 Once the user has completed this process, the Sahha SDK will be able to collect the synced WHOOP health data directly from Apple Health without any further effort from the user.
+
+### Connecting to Apple Health
+
+To enable Health app access, follow these steps:
+
+1. Update your WHOOP App to the latest version
+2. Open the WHOOP app and select the menu icon in the bottom-right corner
+3. Scroll down and select Integrations
+4. Select Apple Health 
+5. Select Connect
+6. Select Turn on all or select which categories you'd like to share between WHOOP and Apple Health
+7. Select Allow
 
 :::tip Setup Guide
 
@@ -27,6 +45,14 @@ Please read and share this guide with your iOS app users.
 Your Android app users will need to perfom a one-time connection between WHOOP and Health Connect on their Android device.
 
 Once the user has ompleted this process, the Sahha SDK will be able to collect the synced WHOOP health data directly from Health Connect without any further effort from the user.
+
+### Connecting to Health Connect
+To enable Health Connect app access, follow these steps:
+ 
+1. Update your WHOOP app to the latest version
+2. Open the WHOOP app and click the More icon in the bottom-right corner
+3. Scroll down and tap Integrations
+4. Tap Health Connect
 
 :::tip Setup Guide
 
