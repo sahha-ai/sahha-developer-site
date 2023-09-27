@@ -3,9 +3,6 @@ sidebar_position: 9
 slug: data-science
 ---
 
-import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
-
 # Data Science
 
 Understand the data science behind Sahha.

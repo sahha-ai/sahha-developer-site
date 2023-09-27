@@ -3,8 +3,6 @@ sidebar_position: 8
 slug: get-the-app
 ---
 
-import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import iosBadge from './img/app-store-badge.png';
 import androidBadge from './img/google-play-badge.png';
 

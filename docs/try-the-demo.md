@@ -1,10 +1,9 @@
 ---
-sidebar_position: 7
+sidebar_position: 9
 slug: try-the-demo
 ---
 
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Try the Demo
 

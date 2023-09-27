@@ -3,7 +3,6 @@ sidebar_position: 5
 ---
 
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Clone the SDK
 
