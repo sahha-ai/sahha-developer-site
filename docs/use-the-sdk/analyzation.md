@@ -196,14 +196,51 @@ The response will be in JSON format. An example response includes these fields:
 
 ```json title=RESPONSE
 {
-  "inferences": [
-    {
-      "createdAt": "2022-05-20T00:30:00+00:00",
-      "predictionState": "not_depressed",
-      "predictionConfidence": 0.8,
-      "dataSource": ["sleep", "steps", "age", "gender"]
-    }
-  ]
+    "inferences": [
+        {
+            "id": "26051AB2-867F-4F8D-B134-0031C20D3FDC",
+            "type": "stress_resilience",
+            "state": "low",
+            "score": 0.34,
+            "factors": {
+                "sleep_routine": 0.22,
+                "sleep_quality": -0.23,
+                "daily_activity": 0.17,
+                "sleep_duration": 0.28,
+                "sleep_debt": -0.13,
+            },
+            "input_data": ["age", "sleep", "steps", "heart_rate"],
+        },
+        {
+            "id": "601ADC2F-4830-45E7-B538-F7821EC009EA",
+            "type": "depression_resilience",
+            "state": "none",
+            "score": 0.14,
+            "factors": {
+                "sleep_routine": 0.12,
+                "sleep_quality": -0.08,
+                "daily_activity": 0.05,
+                "sleep_duration": 0.15,
+                "sleep_debt": -0.11,
+            },
+            "input_data": ["age", "sleep", "steps"],
+        },
+        {
+            "id": "601ADC2F-4830-45E7-B538-F7821EC009EA",
+            "type": "anxiety_resilience",
+            "state": "none",
+            "score": 0.62,
+            "factors": {
+                "sleep_routine": 0.51,
+                "sleep_quality": 0.11,
+                "daily_activity": 0.22,
+                "sleep_duration": 0.13,
+                "sleep_debt": 0.14,
+            },
+            "input_data": ["age", "sleep", "steps", "screen"],
+        },
+    ],
+    "created_at": "2023-07-31T12:00:35.000Z",
 }
 ```
 
