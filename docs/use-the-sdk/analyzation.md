@@ -209,7 +209,7 @@ The response will be in JSON format. An example response includes these fields:
                 "sleep_duration": 0.28,
                 "sleep_debt": -0.13,
             },
-            "input_data": ["age", "sleep", "steps", "heart_rate"],
+            "inputData": ["age", "sleep", "steps", "heart_rate"],
         },
         {
             "id": "601ADC2F-4830-45E7-B538-F7821EC009EA",
@@ -223,7 +223,7 @@ The response will be in JSON format. An example response includes these fields:
                 "sleep_duration": 0.15,
                 "sleep_debt": -0.11,
             },
-            "input_data": ["age", "sleep", "steps"],
+            "inputData": ["age", "sleep", "steps"],
         },
         {
             "id": "601ADC2F-4830-45E7-B538-F7821EC009EA",
@@ -237,10 +237,10 @@ The response will be in JSON format. An example response includes these fields:
                 "sleep_duration": 0.13,
                 "sleep_debt": 0.14,
             },
-            "input_data": ["age", "sleep", "steps", "screen"],
+            "inputData": ["age", "sleep", "steps", "screen"],
         },
     ],
-    "created_at": "2023-07-31T12:00:35+12:00",
+    "createdAt": "2023-07-31T12:00:35+12:00",
 }
 ```
 
@@ -330,7 +330,7 @@ Each inference in the analysis generated will include these distinct data types.
 | state                 | Level of the inference type being predicted |   String      | `none`, `low`, `medium`, `high` |
 | score                 | Score of the inference type being predicted |   Number      | Any number between `0.0` to `1.0`  |
 | factors               | Factors which influence the score and state |    String Array    | Any combination of `sleep_routine`, `sleep_quality`, `sleep_duration`, `sleep_debt`, `daily_activity`                     |
-| input_data           | Data sources used to generate the analysis | String Array | Any combination of `sleep`, `steps`, `screen`, `heart`, `blood`, `age`, `gender` |
+| inputData           | Data sources used to generate the analysis | String Array | Any combination of `sleep`, `steps`, `screen`, `heart`, `blood`, `age`, `gender` |
 | createdAt            | Time the analysis was generated            |    String    | TimeStamp in format `yyyy-MM-dd'T'HH:mm:ssxxx`             |
 
 ### Example
@@ -349,10 +349,10 @@ Each inference in the analysis generated will include these distinct data types.
             "sleep_duration": 0.28,
             "sleep_debt": -0.13,
         },
-        "input_data": ["age", "sleep", "steps", "heart_rate"],
+        "inputData": ["age", "sleep", "steps", "heart_rate"],
     }
     ...
 ]
-    "created_at": "2023-07-31T12:00:35+12:00",
+    "createdAt": "2023-07-31T12:00:35+12:00",
 }
 ```
