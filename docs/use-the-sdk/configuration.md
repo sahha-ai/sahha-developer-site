@@ -287,17 +287,26 @@ enum SahhaEnvironment {
 
 ## Sensor Settings
 
-You can specify which sensors for the Sahha SDK to use. To optimize your analysis result, we suggest enabling all sensors. Leave this value null to enable all sensors by default.
+:::tip You can specify which sensors for the Sahha SDK to use
+
+We suggest asking the user for permission for access to only the sensors that your app needs.
+This will lower the chance that the user will reject your permission request.
+
+**If you leave the Sensor Settings value null, all available sensors will be included by default.**
+
+Please consult a Sahha specialist if you would like advice for your specific use case.
+
+:::
 
 **Some sensors are not available on all platforms.**
 
-| SahhaSensor | Description                                     | Android | iOS |
-| ----------- | ----------------------------------------------- | :-----: | :-: |
-| sleep       | For tracking sleep patterns                     |    ✓    |  ✓  |
-| pedometer   | For tracking walking patterns                   |    ✓    |  ✓  |
-| device      | For tracking device usage patterns              |    ✓    |  X  |
-| heart       | For tracking heart patterns (rate, variability) |    X    |  ✓  |
-| blood       | For tracking blood patterns (pressure, glucose) |    X    |  ✓  |
+| SahhaSensor  | Android Permissions | iOS Permissions |
+| ----------- | :-----: | :-: |
+| sleep       |    SleepSession    |  SleepAnalysis |
+| pedometer   |    Steps    |  StepCount |
+| device      |    Physical Activity  |  X  |
+| heart       |    HeartRate, RestingHeartRate, HeartRateVariabilityRmssd    |  HeartRate, RestingHeartRate, WalkingHeartRateAverage, HeartRateVariabilitySDNN  |
+| blood       |    BloodPressure, BloodGlucose   |  BloodPressureSystolic, BloodPressureDiastolic, BloodGlucose  |
 
 <Tabs groupId="os">
 
