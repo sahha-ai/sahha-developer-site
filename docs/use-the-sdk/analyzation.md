@@ -240,7 +240,7 @@ The response will be in JSON format. An example response includes these fields:
             "input_data": ["age", "sleep", "steps", "screen"],
         },
     ],
-    "created_at": "2023-07-31T12:00:35.000Z",
+    "created_at": "2023-07-31T12:00:35+12:00",
 }
 ```
 
@@ -321,11 +321,38 @@ Learn how to configure demographics as a data source.
 
 ## Data Output
 
-The analysis generated will include these distinct data types.
+Each inference in the analysis generated will include these distinct data types.
 
 | Data Output          | Description                                |   Data Type  | Possible Values                                            |
 | -------------------- | ------------------------------------------ | :----------: | :--------------------------------------------------------- |
+| id                   | Unique id for the inference                |   String      | |
+| type                 | Name of the inference type being predicted |   String      | `stress_resilience`, `depression_resilience`, `anxiety_resilience` |
+| state                 | Level of the inference type being predicted |   String      | `none`, `low`, `medium`, `high` |
+| score                 | Score of the inference type being predicted |   Number      | Any number between `0.0` to `1.0`  |
+| factors               | Factors which influence the score and state |    String Array    | Any combination of `sleep_routine`, `sleep_quality`, `sleep_duration`, `sleep_debt`, `daily_activity`                     |
+| input_data           | Data sources used to generate the analysis | String Array | Any combination of `sleep`, `steps`, `screen`, `heart`, `blood`, `age`, `gender` |
 | createdAt            | Time the analysis was generated            |    String    | TimeStamp in format `yyyy-MM-dd'T'HH:mm:ssxxx`             |
-| predictionState      | Prediction of user health state            |    String    | Either `depressed` or `not_depressed`                      |
-| predictionConfidence | Confidence percentage of `predictionState` |    Number    | Any number between `0.5` to `1.0`                          |
-| dataSource           | Data sources used to generate the analysis | String Array | Any combination of `sleep`,`steps`,`screen`, `heart`, `blood`, `age`, `gender` |
+
+### Example
+```json title=RESPONSE
+{
+    "inferences": [
+    {
+        "id": "26051AB2-867F-4F8D-B134-0031C20D3FDC",
+        "type": "stress_resilience",
+        "state": "low",
+        "score": 0.34,
+        "factors": {
+            "sleep_routine": 0.22,
+            "sleep_quality": -0.23,
+            "daily_activity": 0.17,
+            "sleep_duration": 0.28,
+            "sleep_debt": -0.13,
+        },
+        "input_data": ["age", "sleep", "steps", "heart_rate"],
+    }
+    ...
+]
+    "created_at": "2023-07-31T12:00:35+12:00",
+}
+```
