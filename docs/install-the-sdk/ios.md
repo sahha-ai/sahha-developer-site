@@ -61,6 +61,10 @@ import Sahha
 
 You will need to edit your project settings to enable the Sahha SDK.
 
+:::info Apple Health
+Read through the [Apple Health docs](../apple-health.md) for additional info on setting up your project.
+:::
+
 ***
 
 ### Usage Descriptions
@@ -69,9 +73,7 @@ You will need to edit your project settings to enable the Sahha SDK.
 
 You will need to write a message explaining to the user why they should approve these permissions.
 
-- Add `NSMotionUsageDescription`
 - Add `NSHealthShareUsageDescription`
-- Add `NSHealthUpdateUsageDescription`
 :::
 
 ***
@@ -110,11 +112,7 @@ You can also edit the `Info.plist` file directly.
 ```xml title="Info.plist"
 <plist version="1.0">
 <dict>
-  <key>NSMotionUsageDescription</key>
-  <string>This app would like access to your motion activity for analysis.</string>
 <key>NSHealthShareUsageDescription</key>
-  <string>This app would like access to your health activity for analysis.</string>
-<key>NSHealthUpdateUsageDescription</key>
   <string>This app would like access to your health activity for analysis.</string>
 <key>UIBackgroundModes</key>
 	<array>
