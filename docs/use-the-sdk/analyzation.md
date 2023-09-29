@@ -204,9 +204,9 @@ The response will be in JSON format. An example response includes these fields:
             "score": 0.34,
             "factors": {
                 "sleep_routine": 0.22,
-                "sleep_quality": -0.23,
-                "daily_activity": 0.17,
-                "sleep_duration": 0.28,
+                "sleep_regularity": -0.23,
+                "daily_steps": 0.17,
+                "total_sleep_time": 0.28,
                 "sleep_debt": -0.13,
             },
             "inputData": ["age", "sleep", "steps", "heart_rate"],
@@ -218,9 +218,9 @@ The response will be in JSON format. An example response includes these fields:
             "score": 0.14,
             "factors": {
                 "sleep_routine": 0.12,
-                "sleep_quality": -0.08,
-                "daily_activity": 0.05,
-                "sleep_duration": 0.15,
+                "sleep_regularity": -0.08,
+                "daily_steps": 0.05,
+                "total_sleep_time": 0.15,
                 "sleep_debt": -0.11,
             },
             "inputData": ["age", "sleep", "steps"],
@@ -232,9 +232,9 @@ The response will be in JSON format. An example response includes these fields:
             "score": 0.62,
             "factors": {
                 "sleep_routine": 0.51,
-                "sleep_quality": 0.11,
+                "sleep_regularity": 0.11,
                 "daily_activity": 0.22,
-                "sleep_duration": 0.13,
+                "total_sleep_time": 0.13,
                 "sleep_debt": 0.14,
             },
             "inputData": ["age", "sleep", "steps", "screen"],
@@ -326,10 +326,10 @@ Each inference in the analysis generated will include these distinct data types.
 | Data Output          | Description                                |   Data Type  | Possible Values                                            |
 | -------------------- | ------------------------------------------ | :----------: | :--------------------------------------------------------- |
 | id                   | Unique id for the inference                |   String      | |
-| type                 | Name of the inference type being predicted |   String      | `stress_resilience`, `depression_resilience`, `anxiety_resilience` |
-| state                 | Level of the inference type being predicted |   String      | `none`, `low`, `medium`, `high` |
+| type                 | Name of the inference type being predicted |   String      | `stress_resilience`, `depression_resilience`, `anxiety_resilience`, `sleep` |
+| state                 | Level of the inference type being predicted |   String      | `minimal`, `low`, `medium`, `high` |
 | score                 | Score of the inference type being predicted |   Number      | Any number between `0.0` to `1.0`  |
-| factors               | Factors which influence the score and state |    String Array    | Any combination of `sleep_routine`, `sleep_quality`, `sleep_duration`, `sleep_debt`, `daily_activity`                     |
+| factors               | Factors which influence the score and state |    String Array    | Any combination of `active_hours`, `daily_steps`, `activity_goals`, `sedentary_periods`, `activity_deviation`, `total_sleep_time`, `night_time_activity`, `sleep_regularity`, `sleep_routine`, `sleep_debt`                  |
 | inputData           | Data sources used to generate the analysis | String Array | Any combination of `sleep`, `steps`, `screen`, `heart`, `blood`, `age`, `gender` |
 | createdAt            | Time the analysis was generated            |    String    | TimeStamp in format `yyyy-MM-dd'T'HH:mm:ssxxx`             |
 
@@ -344,9 +344,9 @@ Each inference in the analysis generated will include these distinct data types.
         "score": 0.34,
         "factors": {
             "sleep_routine": 0.22,
-            "sleep_quality": -0.23,
-            "daily_activity": 0.17,
-            "sleep_duration": 0.28,
+            "sleep_regularity": -0.23,
+            "daily_steps": 0.17,
+            "total_sleep_time": 0.28,
             "sleep_debt": -0.13,
         },
         "inputData": ["age", "sleep", "steps", "heart_rate"],
