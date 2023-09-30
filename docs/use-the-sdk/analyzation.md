@@ -214,7 +214,7 @@ The response will be in JSON format. An example response includes these fields:
         {
             "id": "601ADC2F-4830-45E7-B538-F7821EC009EA",
             "type": "depression_resilience",
-            "state": "none",
+            "state": "minimal",
             "score": 0.14,
             "factors": {
                 "sleep_routine": 0.12,
@@ -228,7 +228,7 @@ The response will be in JSON format. An example response includes these fields:
         {
             "id": "601ADC2F-4830-45E7-B538-F7821EC009EA",
             "type": "anxiety_resilience",
-            "state": "none",
+            "state": "medium",
             "score": 0.62,
             "factors": {
                 "sleep_routine": 0.51,
@@ -238,6 +238,20 @@ The response will be in JSON format. An example response includes these fields:
                 "sleep_debt": 0.14,
             },
             "inputData": ["age", "sleep", "steps", "screen"],
+        },
+        {
+            "id": "acde070d-8c4c-4f0d-9d8a-162843c10333",
+            "type": "sleep",
+            "state": "high",
+            "score": 0.75,
+            "factors": {
+                "sleep_routine": 0.013,
+                "sleep_regularity": 0.11,
+                "night_time_activity": 0.005,
+                "total_sleep_time": -0.03,
+                "sleep_debt": -0.023,
+            },
+            "inputData": ["age", "gender", "sleep", "activity"],
         },
     ],
     "createdAt": "2023-07-31T12:00:35+12:00",
@@ -329,8 +343,8 @@ Each inference in the analysis generated will include these distinct data types.
 | type                 | Name of the inference type being predicted |   String      | `stress_resilience`, `depression_resilience`, `anxiety_resilience`, `sleep` |
 | state                 | Level of the inference type being predicted |   String      | `minimal`, `low`, `medium`, `high` |
 | score                 | Score of the inference type being predicted |   Number      | Any number between `0.0` to `1.0`  |
-| factors               | Factors which influence the score and state |    String Array    | Any combination of `active_hours`, `daily_steps`, `activity_goals`, `sedentary_periods`, `activity_deviation`, `total_sleep_time`, `night_time_activity`, `sleep_regularity`, `sleep_routine`, `sleep_debt`                  |
-| inputData           | Data sources used to generate the analysis | String Array | Any combination of `sleep`, `steps`, `screen`, `heart`, `blood`, `age`, `gender` |
+| factors               | Factors which influence the score and state |    String Array    | Any combination of `active_hours`, `night_time_activity`, `daily_steps`, `activity_goals`, `sedentary_periods`, `activity_deviation`, `total_sleep_time`, `night_time_activity`, `sleep_regularity`, `sleep_routine`, `sleep_debt`                  |
+| inputData           | Data sources used to generate the analysis | String Array | Any combination of `sleep`, `steps`, `screen`, `heart`, `blood`, `age`, `gender`, `activity` |
 | createdAt            | Time the analysis was generated            |    String    | TimeStamp in format `yyyy-MM-dd'T'HH:mm:ssxxx`             |
 
 ### Example
