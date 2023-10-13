@@ -129,10 +129,6 @@ const config = {
                 label: 'Install the SDK',
                 to: '/docs/category/install-the-sdk',
               },
-              {
-                label: 'Try the Demo',
-                to: '/docs/try-the-demo',
-              },
             ],
           },
           {

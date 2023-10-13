@@ -62,7 +62,7 @@ import Sahha
 You will need to edit your project settings to enable the Sahha SDK.
 
 :::info Apple Health
-Read through the [Apple Health docs](../apple-health.md) for additional info on setting up your project.
+Read through the [Apple Health docs](../health-systems//apple-health.md) for additional info on setting up your project.
 :::
 
 ***
