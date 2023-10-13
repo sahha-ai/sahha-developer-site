@@ -1,0 +1,8 @@
+{
+  "label": "Health Systems",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "Understanding the health systems used by the Sahha SDK"
+  }
+}
