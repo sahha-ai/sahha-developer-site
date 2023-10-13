@@ -35,109 +35,40 @@ You can find your Client ID and Client Secret inside the Dashboard by going to `
 
 ---
 
-## Step 3) Authenticate Your Account
+## Step 3) Start Building
 
-You will need to authenticate your account to access the Sahha API.
+Choose your platform and start building with Sahha!
 
-View the API docs: [API - Authenticate Account](/api/#tag/1.-Account-Authentication/paths/~1api~1v1~1oauth~1account~1token/post)
+<Link
+            className="button button--secondary button--lg"
+            to='/docs/install-the-sdk/ios'>
+            iOS
+          </Link>
 
-Use your Client ID and Client Secret from the Dashboard to authenticate your account via the API.
+#
+<Link
+            className="button button--secondary button--lg"
+            to='/docs/install-the-sdk/android'>
+            Android
+          </Link>
 
-```json title="REQUEST"
-// POST "/oauth/account/token"
-{
-  "clientId": "MY_CLIENT_ID",
-  "clientSecret": "MY_CLIENT_SECRET"
-}
-```
+#
+<Link
+            className="button button--secondary button--lg"
+            to='docs/install-the-sdk/flutter'>
+            Flutter
+          </Link>
 
-You will receive an `accountToken` that allows you to create new user profiles.
-
-```json title="RESPONSE"
-// 200 OK
-{
-  "accountToken": "MY_ACCOUNT_TOKEN",
-  "expiresIn": "86400",
-  "tokenType": "Account"
-}
-```
-
-***
-
-## Step 4) Authenticate a User Profile
-
-User profiles represent the unique individuals that user your app or service. You will need to authenticate your users in order to upload data and download an analysis for each individual. You can authenticate a user profile via the API or SDK.
-
-### Authenticate via API
-
-You can authenticate a user profile via the API.
-
-View the API docs: [API - Authenticate User Profile](/api/#tag/3.-Profile-Authentication)
-
-Use your `accountToken` and `externalId` to authenticate a user profile via the `profile/register` endpoint.
-
-```json title="REQUEST"
-// POST "/oauth/profile/register"
-// AUTHORIZATION HEADER "Account MY_ACCOUNT_TOKEN"
-
-// BODY
-{
-  "externalId": "MY_EXTERNAL_ID"
-}
-```
-
-You will receive a `profileToken` and `refreshToken` in the API response.
-
-```json title="RESPONSE"
-// POST "/oauth/profile/register"
-// AUTHORIZATION HEADER "Account MY_ACCOUNT_TOKEN"
-
-// BODY
-{
-  "profileToken": "PROFILE_TOKEN",
-  "expiresIn": "86400",
-  "tokenType": "Profile",
-  "refreshToken": "REFRESH_TOKEN"
-}
-```
-
-### Authenticate via SDK
-
-You can also authenticate a user profile via the SDK.
-
-You will need to pass `appId`, `appSecret`, and `externalId` to the `authenticate` method.
-
-View the SDK docs: [Profile - Authenticate](/docs/use-the-sdk/profile)
-
----
-
-## Step 5) Build with Sahha
-
-It's time to start building with Sahha!
-
-You can either:
-
-**Option A)** [Use the API](/api/)
-
-**Option B)** [Use the SDK](/docs/use-the-sdk/configuration)
-
-:::caution Disclaimer
-
-We recommend sending behavioral data using one of the available SDK's instead of directly via the API. Behavioral data that is uploaded via the API may differ in the structure and frequency typical of the device sensors. This could lead to reduced accuracy in your data analysis results.
-
-:::
+#
+<Link
+            className="button button--secondary button--lg"
+            to='docs/install-the-sdk/react-native'>
+            React Native
+          </Link>
 
 ***
 
-## Step 6) Try the Sahha Demo App
-
-To see what you can build with Sahha, we recommend trying one of our demo apps.
-
-[Try the Demo App](/docs/try-the-demo)
-
-***
-
-## Step 7) Join Sahha on Slack
+## Step 5) Join Sahha on Slack
 
 Sahha hosts an open Slack community for developers. Please join us on Slack to get help from the Sahha team and fellow developers to better integrate Sahha into your project.
 
