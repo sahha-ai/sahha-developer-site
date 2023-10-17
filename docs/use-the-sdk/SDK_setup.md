@@ -5,21 +5,15 @@ sidebar_position: 1
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Configuration
+# Setting up the SDK
 
-You will need to configure the Sahha SDK before you can use it.
+In this guide we will teach you how to prepare the Sahha SDK for correct use, configure the environment settings, connect to device sensors and handle notifications. 
 
-:::caution Configure the SDK immediately
+## SDK Configuration
 
-The Sahha SDK must be configured immediately on app launch.
-
-:::
+The Sahha SDK must be configured immediately upon app launch.
 
 ---
-
-## Configure
-
-Choose your specific platform from the options below.
 
 <Tabs groupId="os">
 
@@ -221,7 +215,7 @@ export default function App() {
 
 ## Environment Settings
 
-The `SahhaEnvironment` determines if the SDK connects to the `sandbox` or `production` server of the API. 
+Sahha has two servers, one for development and one for production. We recommend using the development environment until you're ready to go live. The `SahhaEnvironment` determines if the SDK connects to the `sandbox` or `production` server of the API. 
 
 | SahhaEnvironment | Description                     |
 | ---------------- | ------------------------------- |
@@ -287,16 +281,10 @@ enum SahhaEnvironment {
 
 ## Sensor Settings
 
-:::tip You can specify which sensors for the Sahha SDK to use
-
-We suggest asking the user for permission for access to only the sensors that your app needs.
+You can specify which sensors for the Sahha SDK to use. We suggest asking the user for permission for access to only the sensors that your app needs.
 This will lower the chance that the user will reject your permission request.
 
-**If you leave the Sensor Settings value null, all available sensors will be included by default.**
-
-Please consult a Sahha specialist if you would like advice for your specific use case.
-
-:::
+**If you leave the Sensor Settings value `null`, all available sensors will be included by default.**
 
 **Some sensors are not available on all platforms.**
 
@@ -370,7 +358,7 @@ enum SahhaSensor {
 
 ---
 
-## Notifications
+## Notification Settings
 
 You can customize notifications for any platform that includes an Android app.
 

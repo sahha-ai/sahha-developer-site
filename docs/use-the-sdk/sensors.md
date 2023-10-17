@@ -5,23 +5,17 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Sensors
+# Capturing Device Data
 
-Manage device sensors
+This guide will show you how to configure, and manage device sensors and the data they collect.
 
-:::tip Sahha handles sensors for your app
-
-The Sahha SDK acts as a bridge between your app and the sensors.
-
-This simplifies the process of collecting and analyzing device data.
-
-:::
+The Sahha SDK handles sensors for your app and acts as a bridge between your app and the device sensors. This simplifies the process of collecting and analyzing device data.
 
 ***
 
-## Sensor Status
+## About the device sensor status
 
-The sensors have multiple possible statuses.
+The sensors have multiple possible statuses which indicate whether they are enabled or disabled or anywhere in between.
 
 <Tabs groupId="os">
 
@@ -79,11 +73,7 @@ export enum SahhaSensorStatus {
 
 </Tabs>
 
----
-
-### (iOS) Sensor Status - **IMPORTANT INFO**
-
-:::caution User Privacy
+:::caution iOS User Privacy Important Notice
 
 Apple limits the ability to detect the true sensor status to protect user privacy.
 
@@ -108,7 +98,7 @@ Please read the official Apple documentation to better understand authorizing ac
 
 ***
 
-## Get Sensor Status
+## Getting the device sensor status
 
 You can check the current status of the sensors by calling `getSensorStatus`. This method is asynchronous and will return the updated `SahhaSensorStatus` in its callback.
 
@@ -221,7 +211,7 @@ Sahha.configure(settings, (error: string, success: boolean) => {
 
 </Tabs>
 
-## Enable Sensors
+## Enabling device sensors
 
 Before the SDK can start collecting data, you will need to enable sensors by calling `enableSensors`. This method is asynchronous and will return the updated `SahhaSensorStatus` in its callback.
 

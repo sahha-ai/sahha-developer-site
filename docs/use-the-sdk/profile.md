@@ -5,23 +5,130 @@ sidebar_position: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Profile
+# Managing User Profiles
 
-Manage a Sahha user profile
+User Profiles are core to how Sahha works. Each User Profile is associated with a health analysis and corresponding sensor, and health data. This guide will teach you how to create, authenticate and manage user profiles. 
 
 ---
 
-## Authenticate
+## Authenticating a User Profile
 
 The Sahha SDK must be authenticated in order to connect to the Sahha API. Do this once per user profile. Once a profile is authenticated, the SDK will take care of automatically issuing and refreshing API tokens.
 
-You can authenticate a profile in 2 ways - via the API or SDK.
+#### But before we start authenticating User Profiles we need to know how to use the `ExternalID` field
+
+### Using the External ID
+
+You will need to provide your own unique External ID to authenticate a user profile. An External ID can be any string you choose to identify a user profile within your organization. This ID must be unique for each of your users. This ID has a limit of 100 characters.
+
+We suggest using an anonymous UUID e.g. `123e4567-e89b-12d3-a456-426614174000`
+
+:::tip If your user changes devices, make sure to use the same External ID to identify them on the new device.
+
+:::
+
+:::danger User Privacy Warning
+
+Sahha does not collect personally identifiable information from users to safegaurd user data privacy and security.
+
+**DO NOT** use an `ExternalID` that could be used to personally identify a user.
+
+For example, do not use emails or usernames for an `ExternalID`:
+ - Email (Samantha.Jones@website.com)
+ - Username (TimmyT_123)
+
+:::
+
+Now that we know how to use the ExternalID we can start authenticating User Profiles. You can authenticate a User Profile in 2 ways - via the API or SDK.
+
+### Option A) Authenticate via SDK
+
+The fastest way to authenticate a User Profile is via the Sahha SDK. You will need your `appID` and `appSecret` to authenticate user profiles with an External ID which you can get from your [Sahha Dashboard](https://app.sahha.ai) under the API keys tab. 
+
+<Tabs groupId="os">
+
+<TabItem value="ios" label="iOS">
+
+```swift title=MyApp.swift
+Sahha.authenticate(appId: "APP_ID", appSecret: "APP_SECRET", externalId: "EXTERNAL_ID") { error, success in
+	if let error = error {
+   	print(error)
+	} else if success {
+ 		print("You are now authenticated")
+ 	}
+}
+```
+
+</TabItem>
+
+<TabItem value="android" label="Android">
+
+```kotlin title=MainActivity.kt
+Sahha.authenticate(appId: "APP_ID", appSecret:  "APP_SECRET", externalId: "EXTERNAL_ID") { error, success ->
+    if (success) greeting = "Successful"
+    else greeting = error ?: "Failed"
+}
+```
+
+</TabItem>
+
+<TabItem value="flutter" label="Flutter">
+
+```dart title=MyApp.dart
+SahhaFlutter.authenticate(appId: "APP_ID", appSecret: "APP_SECRET", externalId: "EXTERNAL_ID")
+  .then((success) => {
+    debugPrint(success.toString())
+  })
+  .catchError((error, stackTrace) => {
+    debugPrint(error.toString())
+  });
+```
+
+</TabItem>
+
+<TabItem value="react-native" label="React Native">
+
+```typescript title=MyApp.tsx
+Sahha.authenticate(
+  "APP_ID",
+  "APP_SECRET",
+  "EXTERNAL_ID",
+  (error: string, success: boolean) => {
+    console.log(`Success: ${success}`);
+    if (error) {
+      console.error(`Error: ${error}`);
+    }
+  }
+);
+```
+
+</TabItem>
+
+</Tabs>
+
+:::tip Finding your App ID and App Secret
+
+Your `appId` and `appSecret` are available in the Sahha dashboard.
+
+[Login to the Sahha Dashboard](https://app.sahha.ai)
+
+These values are separate from your `clientId` and `clientSecret` and should only be used to authenticate a profile via the SDK.
+
+:::
+
+:::danger Using your App ID and App Secret
+
+**DO NOT** store your app ID and App Secret in your app code. Your account could be harmed if any 3rd party gains access to these two values. 
+
+We recommend storing and accessing these values from your server on app launch.
+
+:::
 
 ---
 
-### Option A) Authenticate via API
+### Option B) Authenticate via API
 
-You can authenticate a user profile via the API and then pass the Profile Token to the SDK.
+You can also authenticate a user profile via the API and then pass the Profile Token to the SDK.
 
 View the API docs: [API - Authenticate User Profile](/api/#tag/3.-Profile-Authentication)
 
@@ -113,125 +220,6 @@ Sahha.authenticateToken(
 </TabItem>
 
 </Tabs>
-
----
-
-### Option B) Authenticate via SDK
-
-You will need your App ID and App Secret to authenticate user profiles with an External ID.
-
-<Tabs groupId="os">
-
-<TabItem value="ios" label="iOS">
-
-```swift title=MyApp.swift
-Sahha.authenticate(appId: "APP_ID", appSecret: "APP_SECRET", externalId: "EXTERNAL_ID") { error, success in
-	if let error = error {
-   	print(error)
-	} else if success {
- 		print("You are now authenticated")
- 	}
-}
-```
-
-</TabItem>
-
-<TabItem value="android" label="Android">
-
-```kotlin title=MainActivity.kt
-Sahha.authenticate(appId: "APP_ID", appSecret:  "APP_SECRET", externalId: "EXTERNAL_ID") { error, success ->
-    if (success) greeting = "Successful"
-    else greeting = error ?: "Failed"
-}
-```
-
-</TabItem>
-
-<TabItem value="flutter" label="Flutter">
-
-```dart title=MyApp.dart
-SahhaFlutter.authenticate(appId: "APP_ID", appSecret: "APP_SECRET", externalId: "EXTERNAL_ID")
-  .then((success) => {
-    debugPrint(success.toString())
-  })
-  .catchError((error, stackTrace) => {
-    debugPrint(error.toString())
-  });
-```
-
-</TabItem>
-
-<TabItem value="react-native" label="React Native">
-
-```typescript title=MyApp.tsx
-Sahha.authenticate(
-  "APP_ID",
-  "APP_SECRET",
-  "EXTERNAL_ID",
-  (error: string, success: boolean) => {
-    console.log(`Success: ${success}`);
-    if (error) {
-      console.error(`Error: ${error}`);
-    }
-  }
-);
-```
-
-</TabItem>
-
-</Tabs>
-
----
-
-### Using Your App ID and App Secret
-
-If you choose to authenticate a user profile via the SDK, you will need to user your App ID and App Secret.
-
-:::tip Finding your App ID and App Secret
-
-Your `appId` and `appSecret` are available in the Sahha dashboard.
-
-[Login to the Sahha Dashboard](https://app.sahha.ai)
-
-These values are separate from your `clientId` and `clientSecret` and should only be used to authenticate a profile via the SDK.
-
-:::
-
-:::danger Using your App ID and App Secret
-
-**DO NOT** store your app ID and App Secret in your app code. Your account could be harmed if any 3rd party gains access to these two values. 
-
-We recommend storing and accessing these values from your server on app launch.
-
-:::
-
----
-
-### Using Your External ID
-
-You will need to provide your own unique External ID to authenticate a user profile.
-
-:::tip Choosing your External ID
-
-An External ID can be any string you choose to identify a user profile within your organization. This ID must be unique for each of your users. This ID has a limit of 100 characters.
-
-We suggest using an anonymous UUID e.g. `123e4567-e89b-12d3-a456-426614174000`
-
-If your user changes devices, make sure to use the same External ID to identify them on the new device.
-
-:::
-
-:::danger User Privacy
-
-Sahha does not collect personally identifiable information from users due to privacy and security.
-
-**DO NOT** use an External ID that could be used to personally identify a user.
-
-For example, do not use emails or usernames for External ID:
- - Email (Samantha.Jones@website.com)
- - Username (TimmyT_123)
-
-:::
 
 ***
 
@@ -364,9 +352,9 @@ Sahha.isAuthenticated(
 
 ---
 
-## Demographic
+## User Profile Demographics
 
-Each authenticated profile includes an optional demographic which can be used to increase the accuracy of analyzation. This data is not collected automatically. Your app can choose to `GET` or `POST` this demographic via the Sahha API.
+Each authenticated profile includes an optional demographic which can be used to increase the accuracy of any analysis. This data is not collected automatically. Your app can choose to `GET` or `POST` this demographic via the Sahha API.
 
 :::info All values are optional
 
@@ -374,11 +362,11 @@ String values are case insensitive (for example: `'us'` and `'US'` are equal and
 
 :::
 
-### `age : Int`
+ #### `age : Int`
 
 Age must be a valid `Int` between `1 - 99`.
 
-### `gender : String`
+#### `gender : String`
 
 Gender must be a valid `String` from this list:
 
@@ -386,57 +374,57 @@ Gender must be a valid `String` from this list:
 - `'female'`
 - `'gender diverse'`
 
-### `country : String`
+#### `country : String`
 
 Country must be a valid 2 character ISO `String` from this list:
 
 [ISO Country Codes](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)
 
-### `birthCountry : String`
+#### `birthCountry : String`
 
 Birth Country must be a valid 2 character ISO `String` from this list:
 
 [ISO Country Codes](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)
 
-### `ethnicity : String`
+#### `ethnicity : String`
 
 Any `String` value.
 
-### `occupation : String`
+#### `occupation : String`
 
 Any `String` value.
 
-### `industry : String`
+#### `industry : String`
 
 Any `String` value.
 
-### `incomeRange : String`
+#### `incomeRange : String`
 
 Any `String` value.
 
-### `education : String`
+#### `education : String`
 
 Any `String` value.
 
-### `relationship : String`
+#### `relationship : String`
 
 Any `String` value.
 
-### `locale : String`
+#### `locale : String`
 
 Any `String` value.
 
-### `livingArrangement : String`
+#### `livingArrangement : String`
 
 Any `String` value.
 
-### `birthDate : String`
+#### `birthDate : String`
 
 Birth Date must be a `String` in the format `'YYYY-MM-DD'`. For example, `'1990-05-20'`.
 
 ***
 
-## MODEL
+## Using the API for Demographics
 
 You can `GET` or `POST` demographic info via the API using this model.
 
@@ -525,7 +513,7 @@ const demographic = {
 
 ***
 
-## POST
+### POST
 
 An example `POST` of demographic info via the SDK.
 
@@ -621,7 +609,7 @@ Sahha.postDemographic(demographic, (error: string, success: boolean) => {
 
 ---
 
-## GET
+### GET
 
 An example `GET` of demographic info via the SDK.
 

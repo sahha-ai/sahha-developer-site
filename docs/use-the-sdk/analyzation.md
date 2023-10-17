@@ -5,13 +5,15 @@ sidebar_position: 4
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Analyzation
+# Behavioral Health Analysis
 
-Analyze a user profile
-
-:::tip Sahha provides automated analyzation
+:::tip Sahha creates a behavioral health analysis every 24 hours.
  
-Sahha analyzes a user's activities over a period of time and provides a mental health personalized report which you can display or action within your app.
+Sahha analyzes device activity daily (data such as sleep, steps and more) to create a comprehensive physical & mental health analysis report for each end user, which you can display or action within your application or access through the Sahha REST API.
+
+Each behavioral analysis report includes the MHRS (Mental Health Resilience Scores) and Wellbeing Scores (Sleep, Movement, Phone Activity)
+[Mental Health Resilience Scores](https://sahha.notion.site/Sahha-Mental-Health-Models-4c589cf92a2345f59977f2aff8428993?pvs=4)
+[Wellbeing Scores](https://sahha.notion.site/Sahha-Mental-Health-Models-4c589cf92a2345f59977f2aff8428993?pvs=4)
 
 **The default time period for an analysis is the previous 24 hours.**
 
@@ -19,9 +21,9 @@ Sahha analyzes a user's activities over a period of time and provides a mental h
 
 ***
 
-## Analyze (Previous 24 Hours)
+## Analyze
 
-Get an analysis for the previous 24 hours in the user's local timezone.
+Get the most recent analysis for the previous 24 hours in the user's local timezone.
 
 <Tabs groupId="os">
 
@@ -328,6 +330,7 @@ Learn how to configure sensors a data source.
 Learn how to configure demographics as a data source.
 
 [Configure Demographics](./profile#demographic)
+
 
 :::
 
